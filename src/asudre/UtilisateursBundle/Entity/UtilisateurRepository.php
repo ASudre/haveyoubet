@@ -105,15 +105,13 @@ class UtilisateurRepository extends EntityRepository
 	
 	/**
 	 * Récupération des utilisateurs d'un groupe
-	 * @param unknown $idMatch Match dont on affiche le classement
+	 * @param unknown $idGroupe
 	 */
 	function getUtilisateursGroupe($idGroupe) {
 		$query = $this->_em->createQuery('SELECT ut
 				FROM asudreUtilisateursBundle:Utilisateur ut
 				JOIN ut.groupesJoueurs g
-				WHERE g.id = :idGroupe
-				GROUP BY ut.id
-				ORDER BY cagnotte desc');
+				WHERE g.id = :idGroupe');
 		$query->setParameters(array(
 				'idGroupe' => $idGroupe
 		));

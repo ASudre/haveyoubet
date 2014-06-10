@@ -46,16 +46,16 @@ class InvitationsController extends Controller
 	/**
 	 * Récupère les joueurs d'un groupe
 	 */
-	public function joueursGroupe() {
-		// Récupération du service des groupes
-		$this->serviceGroupes = $this->container->get('asudre_serviceGroupes');
+	public function joueursGroupeAction() {
+		// Récupération du service des utilisateurs
+		$this->serviceUtilisateurs = $this->container->get('asudre.serviceUtilisateurs');
 		
 		$request = $this->getRequest();
 		$idGroupe = $request->request->get("idGroupe");
 		
 		$retourXMLJoueursGroupe = $this->recuperationJoueursGroupe($idGroupe);
 		
-		return new Response($retourXMLAjoutJoueur);
+		return new Response($retourXMLJoueursGroupe);
 	}
 	
 	/**
@@ -66,8 +66,7 @@ class InvitationsController extends Controller
 		$joueurs = null;
 		
 		if($idGroupe !== null && is_numeric($idGroupe) && is_int($idGroupe + 0)) {
-			$this->serviceGroupes->getUtilisateursGroupe($idGroupe);
-
+			$joueurs = $this->serviceUtilisateurs->recuperationUtilisateursGroupe($idGroupe);
 		}
 		
 		return $this->retourXMLJoueursGroupe($joueurs);
@@ -287,8 +286,8 @@ class InvitationsController extends Controller
 	 */
 	private function retourXMLJoueursGroupe($arrayJoueurs) {
 		$xml = "";
-	
-		if($joueurs !== null) {
+
+		if($arrayJoueurs !== null) {
 			$joueurs = "";
 			
 			foreach ($arrayJoueurs as $index => $joueur) {
@@ -301,7 +300,7 @@ class InvitationsController extends Controller
 				"<date>" .date("d/m/Y H:i"). "</date>" .
 				"<joueurs>" .$joueurs. "</joueurs>" .
 				"<message>" . "</message>" .
-				"<messageInfo>" .$msgInfo. "</messageInfo>" .
+				"<messageInfo></messageInfo>" .
 			"</invitation>";
 	
 		}

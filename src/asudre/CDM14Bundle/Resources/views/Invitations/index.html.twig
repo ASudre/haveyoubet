@@ -113,16 +113,15 @@
 	
 {# 		<div id="ajoutJoueurs">#}
 {# 			<h3>Ajoutez un joueur à un groupe :</h3>#}
-{# 			Ajouter un joueur existant à l'un de ses groupes à partir de son pseudonyme.#}
+{# 			<div style="margin-left: 3%;"><h4>Si un joueur est déjà inscrit, vous pouvez quand même l'ajouter à l'un de vos groupes à partir de son pseudo.</h4></div>#}
 {# 		</div>#}
 		
 {# 		<table id="tableau">#}
 {# 			<thead>#}
 
 {# 				<tr id="groupe">#}
-{# 					<th>{{ 'joueurs.pseudonyme'|trans }}</th>#}
 {# 					<th>{{ 'joueurs.groupe'|trans }}</th>#}
-{# 					<th>{{ 'joueurs.dateInvitation'|trans }}</th>#}
+{# 					<th>{{ 'joueurs.pseudonyme'|trans }}</th>#}
 {# 					<th></th>#}
 {# 				</tr>#}
 {# 			</thead>#}
@@ -130,7 +129,6 @@
 			
 {# 				{% set couleurLigne = 1 %}#}
 {# 					<tr type="initAjoutJoueur" id="couleur{{ couleurLigne }}" class="couleurs" >#}
-{# 						<td><input type="text" id="pseudonyme" /></td>#}
 {# 						<td>#}
 {# 							<select id="selectGroupe" onChange="chargeGroupe()" >#}
 {# 								<option value="" selected></option>#}
@@ -138,8 +136,8 @@
 {# 									<option value="{{ g.id }}">{{ g.nomGroupe }}</option>#}
 {# 								{% endfor %}#}
 {# 							</select>#}
+{# 						<td><input type="text" id="pseudonyme" /></td>#}
 {# 						</td>#}
-{# 						<td></td>#}
 {# 						<td>#}
 {# 							<span id="boutonAjoutJoueur">#}
 {# 								<div onClick="ajouterJoueur();" class="button white boutonValider">#}

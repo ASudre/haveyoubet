@@ -394,6 +394,8 @@ function chargeGroupe() {
 		return;
 	}
 	
+	var param = "idGroupe=" + idGroupe;
+	
 	$.ajax({
 		type: "POST",
 		url: Routing.generate('asudre_joueurs_groupe'),
@@ -418,10 +420,17 @@ function chargeGroupe() {
 					// Affichage de la nouvelle invitation
 					$('tr[type="initAjoutJoueur"]').after("" +
 							"<tr>" +
-							"	<td>" + $(joueurs[i]).text() + "</td>" +
-							"	<td>" + date + "</td>" +
 							"	<td></td>" +
-					"</tr>");
+							"	<td>" + $(joueurs[i]).text() + "</td>" +
+							"	<td>" +
+							"		<span id=\"boutonSupprimerJoueur\">" +
+							"			<div onClick=\"supprimerJoueur();\" class=\"buttonAnnuler red\">" +
+							"				X" +
+							"			</div>" +
+							"		</span>" +
+							"	</td>" +
+							"	<td></td>" +
+							"</tr>");
 				}
 			}
 		}
