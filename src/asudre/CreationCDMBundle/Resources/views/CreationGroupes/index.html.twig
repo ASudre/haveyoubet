@@ -1,0 +1,31 @@
+{% extends "asudreCDM14Bundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }}Groupes{% endblock %}
+
+{% block body %}
+
+<div id="contenu">
+	<h1>Création des groupes</h1>
+	
+	<form action="{{ path('asudre_creation_groupes_save') }}" method="POST">
+		<table style="margin:auto">
+			<tr>
+				<td>Combien de groupes : </td>
+				<td><input type="text" name="nbGroupes" value="{{ nbrGroupes }}" /></td>
+			</tr>
+			<tr>
+				<td>Combien d'équipes : </td>
+				<td><input type="text" name="nbEquipes"  value="{{ nbrEquipes }}" /></td>
+			</tr>
+			<tr colspan="2">
+				<td>
+					<input type="submit" value="Suite" />
+				</td>
+			</tr>
+		</table>
+		<input type="hidden" name="nbGroupesAvant"  value="{{ nbrGroupes }}" />
+		<input type="hidden" name="nbEquipesAvant"  value="{{ nbrEquipes }}" />
+	</form>
+	
+</div>
+{% endblock %}

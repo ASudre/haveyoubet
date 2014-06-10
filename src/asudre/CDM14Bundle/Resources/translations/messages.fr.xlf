@@ -1,0 +1,231 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="fr" datatype="plaintext" original="file.ext">
+        <body>
+        	<group id="entete-mises">
+	            <trans-unit id="1">
+	                <source>valider</source>
+	                <target>Valider</target>
+	            </trans-unit>
+	           <trans-unit id="2">
+	           		<source>matchs.numero</source>
+	           		<target>N°</target>
+	            </trans-unit>
+				<trans-unit id="3">
+					<source>matchs.match</source>
+					<target>Match / Cotes / Score</target>
+	            </trans-unit>
+				<trans-unit id="4">
+					<source>matchs.groupe</source>
+					<target>Groupe</target>
+	            </trans-unit>
+				<trans-unit id="5">
+					<source>matchs.date</source>
+					<target>Date</target>
+	            </trans-unit>
+				<trans-unit id="6">
+					<source>matchs.mise</source>
+					<target>Mise</target>
+	            </trans-unit>
+				<trans-unit id="7">
+					<source>matchs.equipe</source>
+					<target>Equipe</target>
+	            </trans-unit>
+				<trans-unit id="19">
+					<source>matchs.score</source>
+					<target>Score</target>
+	            </trans-unit>
+	        </group>
+	    	<group id="msg_erreur-mises">
+				<trans-unit id="8">
+					<source>erreur.match.commence</source>
+					<target>Vous ne pouvez plus miser pour ce match.</target>
+	            </trans-unit>
+				<trans-unit id="20">
+					<source>erreur.match.non.commence</source>
+					<target>Ce match n'a pas encore débuté.</target>
+	            </trans-unit>
+				<trans-unit id="9">
+					<source>erreur.match.commence.annule</source>
+					<target>Vous ne pouvez plus annuler ce match.</target>
+	            </trans-unit>
+				<trans-unit id="10">
+					<source>erreur.elimine.joker</source>
+					<target>Vous êtes éliminés, vous n'avez plus de joker.</target>
+	            </trans-unit>
+				<trans-unit id="11">
+					<source>erreur.match.annulation</source>
+					<target>Il n'y a pas de mise pour ce match.</target>
+	            </trans-unit>
+				<trans-unit id="12">
+					<source>erreur.match.commence.mise</source>
+					<target>Il est trop tard pour miser pour ce match.</target>
+	            </trans-unit>
+				<trans-unit id="13">
+					<source>erreur.mise.cagnotte</source>
+					<target>Votre cagnotte est trop faible pour miser cette somme.</target>
+	            </trans-unit>
+				<trans-unit id="14">
+					<source>erreur.match.concordance</source>
+					<target>Cette équipe ne joue pas pour ce match.</target>
+	            </trans-unit>
+				<trans-unit id="18">
+					<source>erreur.match.commence</source>
+					<target>Ce match a déjà débuté.</target>
+	            </trans-unit>
+				<trans-unit id="15">
+					<source>erreur.mise.nonAutorisee</source>
+					<target>Cette mise n'est pas autorisée pour ce match.</target>
+	            </trans-unit>
+				<trans-unit id="16">
+					<source>erreur.joueur.estElimine</source>
+					<target>Vous êtes éliminé de la compétition. Vous ne pouvez plus miser.</target>
+	    		</trans-unit>
+				<trans-unit id="22">
+					<source>erreur.cagnotte.trop.faible</source>
+					<target>Vous n'avez pas assez de jetons pour effectuer cette mise.</target>
+	    		</trans-unit>
+				<trans-unit id="38">
+					<source>erreur.valeurs.form</source>
+					<target>Les valeurs fournies sont incorrectes.</target>
+	    		</trans-unit>
+	    	</group>
+	    	<group id="msg_info-mises">
+				<trans-unit id="17">
+					<source>msg.info.mise</source>
+					<target>Mise sur %equipe% pour une valeur de %valeur%.</target>
+	            </trans-unit>
+				<trans-unit id="21">
+					<source>msg.info.score</source>
+					<target>Score validé.</target>
+	            </trans-unit>
+				<trans-unit id="35">
+					<source>msg.info.groupe</source>
+					<target>Groupe ajouté.</target>
+	            </trans-unit>
+				<trans-unit id="41">
+					<source>msg.info.invitation</source>
+					<target>%nbInvitations% invitations envoyées.</target>
+	            </trans-unit>
+				<trans-unit id="52">
+					<source>msg.info.ajoutJoueur</source>
+					<target>%pseudonyme% ajouté au groupe %groupe%.</target>
+	            </trans-unit>
+	    	</group>
+	    	<group id="entete-classement-joueurs">
+	           <trans-unit id="26">
+	           		<source>joueurs.numero</source>
+	           		<target>N°</target>
+	            </trans-unit>
+	           <trans-unit id="50">
+	           		<source>joueurs.groupe</source>
+	           		<target>Groupe</target>
+	            </trans-unit>
+				<trans-unit id="23">
+					<source>joueurs.nom</source>
+					<target>Joueur</target>
+	            </trans-unit>
+				<trans-unit id="24">
+					<source>joueurs.cagnotte</source>
+					<target>Cagnotte</target>
+	            </trans-unit>
+				<trans-unit id="25">
+					<source>joueurs.dernierGain</source>
+					<target>Dernier gain</target>
+	            </trans-unit>
+	        </group>    
+	        <group id="entete-invitations-joueurs">    
+				<trans-unit id="28">
+					<source>joueurs.email</source>
+					<target>Courriels</target>
+	            </trans-unit>
+				<trans-unit id="27">
+					<source>joueurs.dateInscription</source>
+					<target>Date inscription</target>
+	            </trans-unit>
+				<trans-unit id="39">
+					<source>joueurs.dateInvitation</source>
+					<target>Date invitation</target>
+	            </trans-unit>
+				<trans-unit id="29">
+					<source>joueurs.pseudonyme</source>
+					<target>Pseudonyme</target>
+	            </trans-unit>
+				<trans-unit id="32">
+					<source>joueurs.groupe</source>
+					<target>Groupe</target>
+	            </trans-unit>
+	        </group>
+	        <group id="entete-creation-groupes">
+				<trans-unit id="30">
+					<source>groupes.nom</source>
+					<target>Nom du groupe</target>
+	            </trans-unit>
+				<trans-unit id="42">
+					<source>groupes.erreur.acces.base</source>
+					<target>Erreur de sauvegarde en base.</target>
+	            </trans-unit>
+				<trans-unit id="31">
+					<source>groupes.date</source>
+					<target>Date de création</target>
+	            </trans-unit>
+				<trans-unit id="33">
+					<source>groupes.creer</source>
+					<target>Créer</target>
+	            </trans-unit>
+				<trans-unit id="40">
+					<source>groupes.inviter</source>
+					<target>Inviter</target>
+	            </trans-unit>
+				<trans-unit id="51">
+					<source>groupes.ajouterJoueur</source>
+					<target>Ajouter</target>
+	            </trans-unit>
+				<trans-unit id="34">
+					<source>groupes.code</source>
+					<target>Code d'invitation</target>
+	            </trans-unit>
+	        </group>
+	        <group id="msg_erreur_groupes">
+				<trans-unit id="36">
+					<source>groupes.utilisé</source>
+					<target>Groupe déjà utilisé.</target>
+	            </trans-unit>
+				<trans-unit id="37">
+					<source>groupes.nom.invalide</source>
+					<target>Nom du groupe non valide.</target>
+	            </trans-unit>
+	        </group>
+	        <group id="msg_erreur_inscription">
+				<trans-unit id="43">
+        			<source>invitation.non.valide</source>
+					<target>Le code d'invitation n'est pas valide.</target>
+	            </trans-unit>
+				<trans-unit id="44">
+        			<source>invitation.utilisee</source>
+					<target>Cette invitation est déjà utilisée.</target>
+	            </trans-unit>
+				<trans-unit id="45">
+        			<source>motsDePasse.non.identiques</source>
+					<target>Les mots de passe ne sont pas identiques.</target>
+	            </trans-unit>
+				<trans-unit id="48">
+        			<source>motDePasse.trop.court</source>
+					<target>Le mot de passe est trop court. Il doit contenir au moins 8 caractères.</target>
+	            </trans-unit>
+				<trans-unit id="46">
+        			<source>nomUtilisateur.non.valide</source>
+					<target>Ce nom d'utilisateur n'est pas valide.</target>
+	            </trans-unit>
+				<trans-unit id="47">
+					<source>nomUtilisateur.utilise</source>
+					<target>Ce nom d'utilisateur est déjà utilisé.</target>
+	            </trans-unit>
+				<trans-unit id="49">
+					<source>courriel.utilise</source>
+					<target>Ce courriel est déjà utilisé.</target>
+	            </trans-unit>
+	        </group>
+        </body>
+    </file>
+</xliff>

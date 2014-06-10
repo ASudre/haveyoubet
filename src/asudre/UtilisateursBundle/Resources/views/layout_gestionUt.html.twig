@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+
+	<title>{% block title %}CDM14 - {% endblock %}</title>
+	
+	{% stylesheets
+	    "@asudreCDM14Bundle/Resources/public/css/cdm.css"
+	%}
+		<link type="text/css" rel="stylesheet" media="all" href="{{ asset_url }}" />
+	{% endstylesheets %}
+
+  </head>
+
+	{% include "asudreUtilisateursBundle::enTete.html.twig" %}
+	
+    {% block body %}
+    {% endblock %}
+
+	{% include "asudreCDM14Bundle::piedDePage.html.twig" %}
+  </body>
+</html>

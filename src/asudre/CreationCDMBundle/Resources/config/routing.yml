@@ -1,0 +1,23 @@
+asudre_creation_cdm_accueil:
+    pattern:  /
+    defaults: { _controller: asudreCreationCDMBundle:Accueil:index }
+
+asudre_creation_equipes:
+    pattern:  /Equipes
+    defaults: { _controller: asudreCreationCDMBundle:CreationEquipes:index }
+
+asudre_creation_equipes_save:
+    pattern:  /Equipes_sauvegarde
+    defaults: { _controller: asudreCreationCDMBundle:CreationEquipes:sauvegarde }
+
+asudre_creation_matchs:
+    pattern:  /Matchs
+    defaults: { _controller: asudreCreationCDMBundle:CreationMatchs:index }
+
+asudre_creation_groupes:
+    pattern:  /Groupes
+    defaults: { _controller: asudreCreationCDMBundle:CreationGroupes:index }
+    
+asudre_creation_groupes_save:
+    pattern:  /Groupes_sauvegarde
+    defaults: { _controller: asudreCreationCDMBundle:CreationGroupes:sauvegarde }

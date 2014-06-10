@@ -1,0 +1,154 @@
+{% extends "asudreCDM14Bundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }}Invite tes amis{% endblock %}
+
+{% block body %}
+	<div id="contenu">
+		<div id="groupes">
+			<h3>Créer un groupe :</h3>
+			<h4 style="margin-left: 3%;">Un groupe permettra de visionner les membres dans un classement ne contenant que ses joueurs.</h4>
+			<table id="tableau">
+				<thead>
+	
+					<tr id="groupe">
+						<th>{{ 'groupes.nom'|trans }}</th>
+						<th>{{ 'groupes.date'|trans }}</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					{% set couleurLigne = 1 %}
+						<tr type="initGroupes" id="couleur{{ couleurLigne }}" class="couleurs" >
+							<td><input type="text" id="nomGroupe" /></td>
+							<td></td>
+							<td>
+								<span id="boutonGroupe">
+									<div onClick="creationGroupe();" class="button white boutonValider">
+										{{ 'groupes.creer'|trans }}
+									</div>
+								</span>
+							</td>
+						</tr>
+					{% for g in groupes %}
+						{% set couleurLigne = (couleurLigne + 1) % 2 %}
+						<tr id="couleur{{ couleurLigne }}" class="couleurs" >
+							<td>{{ g.nomGroupe }}</td>
+							<td>{{ g.date|date('d/m/Y H:i') }}</td>
+							<td></td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		
+		<br/>
+		<hr/>
+		
+		<div id="invitations">
+			<h3>Inviter des amis :</h3>
+			<div style="margin-left: 3%;"><h4>Plus on est de fous, plus on rit, et plus il y a d'argent en jeu.</h4>
+				<p>Pour inviter, choisissez un groupe, et remplissez le champ 'Courriels' avec les adresses de vos amis séparées par des virgules.</p>
+			</div>
+		</div>
+		
+		<table id="tableau">
+			<thead>
+
+				<tr id="groupe">
+					<th>{{ 'joueurs.email'|trans }}</th>
+					<th>{{ 'joueurs.groupe'|trans }}</th>
+					<th>{{ 'joueurs.pseudonyme'|trans }}</th>
+					<th>{{ 'joueurs.dateInvitation'|trans }}</th>
+					<th>{{ 'joueurs.dateInscription'|trans }}</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+			
+				{% set couleurLigne = 1 %}
+					<tr type="initInvitations" id="couleur{{ couleurLigne }}" class="couleurs" >
+						<td><textarea id="courriels"></textarea></td>
+						<td>
+							<select id="groupe">
+								{% for g in groupes %}
+									<option value="{{ g.id }}">{{ g.nomGroupe }}</option>
+								{% endfor %}
+							</select>
+						</td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>
+							<span id="boutonInvitation">
+								<div onClick="inviter();" class="button white boutonValider">
+									{{ 'groupes.inviter'|trans }}
+								</div>
+							</span>
+						</td>
+					</tr>
+				{% for i in invitations %}
+					{% set couleurLigne = (couleurLigne + 1) % 2 %}
+						<tr id="couleur{{ couleurLigne }}" class="couleurs" >
+							<td>{{ i.courriel }}</td>
+							<td>{{ i.groupe.nomGroupe }}</td>
+							<td>
+								{% if i.invite.username is defined %}
+									{{ i.invite.username }}
+								{% endif %}
+							</td>
+							<td>{{ i.date|date('d/m/Y H:i') }}</td>
+							<td>
+								{% if i.invite.dateInscription is defined %}
+									{{ i.invite.dateInscription|date('d/m/Y H:i') }}
+								{% endif %}
+							</td>
+							<td></td>
+						</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+			
+{# 		<br/>#}
+{# 		<hr/>#}
+	
+{# 		<div id="ajoutJoueurs">#}
+{# 			<h3>Ajoutez un joueur à un groupe :</h3>#}
+{# 			Ajouter un joueur existant à l'un de ses groupes à partir de son pseudonyme.#}
+{# 		</div>#}
+		
+{# 		<table id="tableau">#}
+{# 			<thead>#}
+
+{# 				<tr id="groupe">#}
+{# 					<th>{{ 'joueurs.pseudonyme'|trans }}</th>#}
+{# 					<th>{{ 'joueurs.groupe'|trans }}</th>#}
+{# 					<th>{{ 'joueurs.dateInvitation'|trans }}</th>#}
+{# 					<th></th>#}
+{# 				</tr>#}
+{# 			</thead>#}
+{# 			<tbody>#}
+			
+{# 				{% set couleurLigne = 1 %}#}
+{# 					<tr type="initAjoutJoueur" id="couleur{{ couleurLigne }}" class="couleurs" >#}
+{# 						<td><input type="text" id="pseudonyme" /></td>#}
+{# 						<td>#}
+{# 							<select id="selectGroupe" onChange="chargeGroupe()" >#}
+{# 								<option value="" selected></option>#}
+{# 								{% for g in groupes %}#}
+{# 									<option value="{{ g.id }}">{{ g.nomGroupe }}</option>#}
+{# 								{% endfor %}#}
+{# 							</select>#}
+{# 						</td>#}
+{# 						<td></td>#}
+{# 						<td>#}
+{# 							<span id="boutonAjoutJoueur">#}
+{# 								<div onClick="ajouterJoueur();" class="button white boutonValider">#}
+{# 									{{ 'groupes.ajouterJoueur'|trans }}#}
+{# 								</div>#}
+{# 							</span>#}
+{# 						</td>#}
+{# 					</tr>#}
+{# 			</tbody>#}
+{# 		</table>#}
+	</div>
+{% endblock %}

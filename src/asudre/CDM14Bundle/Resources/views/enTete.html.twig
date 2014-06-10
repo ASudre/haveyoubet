@@ -1,0 +1,22 @@
+<div id="menuBar">
+	<div style="color:white">
+ 	   	Bienvenue {{ app.user.username }}
+	</div>
+	<div style="color:white">
+ 	   	Cagnotte : 
+ 	   	<span id="cagnotte" >
+ 	   		{% set cagnotteCourante = app.user.cagnotte - app.session.get('sommeMises') %}
+	 	   	{% if cagnotteCourante <= 0 and app.session.get('sommeMises') == 0 %}
+	 	   		Eliminé
+	 	   	{% else %}
+	 	   		{{ cagnotteCourante|round(2) }}
+	 	   	{% endif %}
+ 	   	</span>
+	</div>
+	<div id="menuDroite">
+		<a href="{{ path('fos_user_security_logout') }}">D&eacute;connexion</a>
+	</div>
+</div>
+<div id="msg">
+	<p>Chargement...</p>
+</div>

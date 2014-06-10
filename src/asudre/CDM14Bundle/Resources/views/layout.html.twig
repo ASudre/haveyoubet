@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+{# 	<link rel="stylesheet" href="{{ asset('bundles/asudre/css/cdm.css') }}" type="text/css" />#}
+	{% javascripts 
+		'@asudreCDM14Bundle/Resources/public/js/jquery-1.11.0.min.js'
+		'@asudreCDM14Bundle/Resources/public/js/cdm.js'
+	%}
+    	<script type="text/javascript" src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+	
+	{% stylesheets
+	    "@asudreCDM14Bundle/Resources/public/css/cdm.css"
+	%}
+		<link type="text/css" rel="stylesheet" media="all" href="{{ asset_url }}" />
+	{% endstylesheets %}
+            
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+	<script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+
+	<title>{% block title %}CDM14 - {% endblock %}</title>
+
+  </head>
+  <body onload="menuAffiche({{ app.session.get('menuGauche') }});">
+  
+ 	{% include "asudreCDM14Bundle::analyticstracking.html.twig" %}
+
+	{% include "asudreCDM14Bundle::enTete.html.twig" %}
+	{% include "asudreCDM14Bundle::menuGauche.html.twig" %}
+	
+    {% block body %}
+    {% endblock %}
+
+	{% include "asudreCDM14Bundle::piedDePage.html.twig" %}
+  </body>
+</html>

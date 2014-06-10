@@ -1,0 +1,47 @@
+{% extends "asudreCDM14Bundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }}Equipes{% endblock %}
+
+{% block body %}
+
+<div id="contenu">
+	<h1>Création des Equipes</h1>
+	
+	<div class="well" style="margin: 2%;">
+	
+	<form method="POST" {{ form_enctype(form) }}>
+	
+	{% set groupe = '' %}
+	
+	{% for equipe in form.equipes %}
+	
+		{% if equipe.groupe.vars.value != groupe %}
+	
+			{% set groupe = equipe.groupe.vars.value %}
+	
+			<div style="border:1px solid;border-radius:5px;padding: 4%;background-color: whitesmoke;text-align:center;">
+			
+			<h3>Groupe {{ equipe.groupe.vars.value }}</h3>
+			
+		{% endif %}
+	
+		{{ form_widget(equipe.nom) }}
+		{{ form_widget(equipe.groupe) }}
+		
+{# 		Test du groupe de l'équipe suivante pour fermer le div #}
+		{% if (form.equipes[loop.index] is defined 
+			and form.equipes[loop.index].groupe.vars.value != groupe)
+			or not form.equipes[loop.index] is defined
+		%}
+			</div>
+			<br/>
+		{% endif %}
+	
+	{% endfor %}
+	<br/>
+	<input type="submit" value="Suite" />
+	</form>
+	</div>
+</div>
+{% endblock %}
+

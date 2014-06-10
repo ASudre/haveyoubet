@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    {% stylesheets '@CDM14Bundle/Resources/public/css/cdm.css' %}
+		<link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+	{% endstylesheets %}
+	<title>CDM14 - Inscription</title>
+  </head>
+
+	<body>
+	
+		{% include "asudreCDM14Bundle::analyticstracking.html.twig" %}
+		
+		<form action="{{ path('asudre_inscription') }}" method="POST">
+		
+			<div id="authentification">
+				<table>
+					<tr>
+						<td>
+							Identifiant<span id="asterisque">*</span> :
+						</td>
+						<td>
+							<input class="input" name="utilisateur" type="text" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Mot de passe<span id="asterisque">*</span> :
+						</td>
+						<td>
+							<input class="input" name="motDePasse" type="password" />
+						</td>
+					</tr>
+					<tr>
+						<td id="erreur" colspan="2">
+							<!-- <c:if test="${trouve == false}">Le mot de passe ou l'identifiant est incorrect.</c:if> -->
+							<!-- <c:if test="${inscrit == true}">Vous �tes inscrit, vous pouvez maintenant vous identifier.</c:if> -->
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<input type="hidden" value="${idInvitation}" name="idInvitation" />
+							<input type="submit" value="Valider"/>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</form>
+	
+	</body>
+	
+	{% include "asudreCDM14Bundle::piedDePage.html.twig" %}
+
+</html>

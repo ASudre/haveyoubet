@@ -1,0 +1,31 @@
+parameters:
+    asudre_serviceUtilisateurs: asudre\CDM14Bundle\Services\ServiceUtilisateurs
+    asudre_serviceMatchs: asudre\CDM14Bundle\Services\ServiceMatchs
+    asudre_serviceMises: asudre\CDM14Bundle\Services\ServiceMises
+    asudre_serviceEquipes: asudre\CDM14Bundle\Services\ServiceEquipes
+    asudre_serviceGroupes: asudre\CDM14Bundle\Services\ServiceGroupes
+    asudre_serviceInvitations: asudre\CDM14Bundle\Services\ServiceInvitations
+    asudre_serviceMails: asudre\CDM14Bundle\Services\ServiceMails
+
+services:
+    asudre.serviceMatchs:
+        class: %asudre_serviceMatchs%
+        arguments: [@doctrine.orm.entity_manager]
+    asudre.serviceMises:
+        class: %asudre_serviceMises%
+        arguments: [@doctrine.orm.entity_manager]
+    asudre.serviceEquipes:
+        class: %asudre_serviceEquipes%
+        arguments: [@doctrine.orm.entity_manager]
+    asudre.serviceUtilisateurs:
+        class: %asudre_serviceUtilisateurs%
+        arguments: [@doctrine.orm.entity_manager, @fos_user.user_manager]
+    asudre_serviceGroupes:
+        class: %asudre_serviceGroupes%
+        arguments: [@doctrine.orm.entity_manager]
+    asudre_serviceInvitations:
+        class: %asudre_serviceInvitations%
+        arguments: [@doctrine.orm.entity_manager]
+    asudre_serviceMails:
+        class: %asudre_serviceMails%
+        arguments: [@mailer, @templating]

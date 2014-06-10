@@ -1,0 +1,11 @@
+parameters:
+    asudre_creation_cdm.equipes.class: asudre\CreationCDMBundle\Services\ServiceCreationEquipes
+    asudre_creation_cdm.matchs.class: asudre\CreationCDMBundle\Services\ServiceCreationMatchs
+
+services:
+    asudre_creation_cdm.equipes:
+        class: %asudre_creation_cdm.equipes.class%
+        arguments: [@doctrine.orm.entity_manager]
+    asudre_creation_cdm.matchs:
+        class: %asudre_creation_cdm.matchs.class%
+        arguments: [@doctrine.orm.entity_manager]

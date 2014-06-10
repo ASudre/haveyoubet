@@ -1,0 +1,67 @@
+asudre_accueil:
+    pattern:  /Accueil
+    defaults: { _controller: asudreCDM14Bundle:Accueil:index }
+
+asudre_scores:
+    pattern:  /Scores
+    defaults: { _controller: asudreCDM14Bundle:Scores:index }
+    
+asudre_score:
+    pattern:  /Score
+    defaults: { _controller: asudreCDM14Bundle:Score:index }
+    options:
+        expose: true
+    
+asudre_mise:
+    pattern:  /Mise
+    defaults: { _controller: asudreCDM14Bundle:Mise:index }
+    options:
+        expose: true
+        
+asudre_matchs:
+    pattern: /Matchs
+    defaults: { _controller: asudreCDM14Bundle:Matchs:index }
+
+asudre_classement_joueurs:
+    pattern: /ClassementJoueurs
+    defaults: { _controller: asudreCDM14Bundle:ClassementJoueurs:index }
+    
+asudre_invite_amis:
+    pattern: /Invitations
+    defaults: { _controller: asudreCDM14Bundle:Invitations:index }
+    
+asudre_ajout_joueur:
+    pattern: /AjoutJoueur
+    defaults: { _controller: asudreCDM14Bundle:Invitations:ajoutJoueur }
+    options:
+        expose: true
+            
+asudre_joueurs_groupe:
+    pattern: /JoueursGroupe
+    defaults: { _controller: asudreCDM14Bundle:Invitations:joueursGroupe }
+    options:
+        expose: true
+    
+asudre_inscription:
+    pattern: /Inscription
+    defaults: { _controller: asudreUtilisateursBundle:Utilisateur:inscription }
+    
+asudre_regles_jeu:
+    pattern: /Regles
+    defaults: { _controller: asudreCDM14Bundle:Regles:index }
+    
+asudre_lienMailInscription:
+    pattern: /lienInscription
+    defaults: { _controller: asudreUtilisateursBundle:Utilisateur:lienMailInscription }
+    
+asudre_groupe:
+    pattern:  /Groupe
+    defaults: { _controller: asudreCDM14Bundle:Groupe:index }
+    options:
+        expose: true
+        
+asudre_invitation:
+    pattern:  /Invitation
+    defaults: { _controller: asudreCDM14Bundle:Invitations:invitation }
+    options:
+        expose: true

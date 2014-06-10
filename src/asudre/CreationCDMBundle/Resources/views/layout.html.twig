@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="{{
+asset('bundles/asudre/css/cdm.css') }}" type="text/css" />
+    <title>{% block title %}Création Coupe du Monde - {% endblock %}</title>
+  </head>
+  <body>
+  
+	{% include "asudreCDM14Bundle::analyticstracking.html.twig" %}
+	{% include "asudreCDM14Bundle::enTete.html.twig" %}
+	
+    {% block body %}
+    {% endblock %}
+
+	{% include "asudreCDM14Bundle::piedDePage.html.twig" %}
+  </body>
+</html>

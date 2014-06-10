@@ -1,0 +1,112 @@
+{% extends "asudreCDM14Bundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }}Matchs{% endblock %}
+
+{% block body %}
+		<div id="contenu">
+		<table id="tableau">
+			<thead>
+
+				<tr id="groupe">
+					<th id="points">{{ 'matchs.numero'|trans }}</th>
+					<th>{{ 'matchs.match'|trans }}</th>
+					<th>{{ 'matchs.groupe'|trans }}</th>
+					<th>{{ 'matchs.date'|trans }}</th>
+					<th>{{ 'matchs.equipe'|trans }}</th>
+					<th>{{ 'matchs.mise'|trans }}</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+			
+				{% set couleurLigne = 1 %}
+				{% set couleurLigneMises = 0 %}
+				{% for m in matchs %}
+				
+					<tr id="couleur{{ couleurLigne }}" char="{{ m.id }}" class="couleurs" >
+						<td class="lignesMises" char="{{ m.id }}" id="points">
+							<div
+									{% if mises[m.id] is not defined %} class="button boutonValider"
+									{% else %} onClick="afficherMises({{ m.id }}, false);" class="button white boutonValider"
+									{% endif %}>
+									{{ loop.index }}
+							</div>
+						</td>
+						<td class="lignesMises" char="{{ m.id }}" id="equipe">
+							{{ m.equipe1.nom }} - {{ m.equipe2.nom }} / 
+							<span class="{{ m.id }}" id="coteEq1">{{ cotes[m.id]['eq1']|round(2) }}</span>
+							 - 
+							<span class="{{ m.id }}" id="coteNul">{{ cotes[m.id]['nul']|round(2) }}</span>
+							  - 
+							<span class="{{ m.id }}" id="coteEq2">{{ cotes[m.id]['eq2']|round(2) }}</span>
+							{% if m.scoreEq1 is not null and m.scoreEq2 is not null %}
+								 / {{ m.scoreEq1 }} - {{ m.scoreEq2 }}
+							{% endif %}
+						</td>
+						<td class="lignesMises" char="{{ m.id }}">
+							{{ m.groupe }}
+						</td>
+						<td class="lignesMises" char="{{ m.id }}">
+							{{ m.date|date('d/m/Y H:i') }}
+						</td>
+						<td class="selectEquipe">
+							<select name="select{{ m.id }}" id="{{ m.id }}"
+								{% if m.estMatchJoue %} disabled="disabled" {% endif %} >
+								<option selected="selected" value=""></option>
+								<option value="{{ m.equipe1.id }}"
+									{% if mises[m.id] is defined and m.equipe1.id == mises[m.id][0].equipe.id %} selected="selected" {% endif %} >{{ m.equipe1.nom }}</option>
+								{% if not m.estPhaseFinale %}
+									<option value="33"
+									{% if mises[m.id] is defined and 33 == mises[m.id][0].equipe.id %} selected="selected" {% endif %} >Nul</option>
+								 {% endif %}
+								<option value="{{ m.equipe2.id }}"
+									{% if mises[m.id] is defined and m.equipe2.id == mises[m.id][0].equipe.id %} selected="selected" {% endif %} >{{ m.equipe2.nom }}</option>
+						</select></td>
+						<td class="selectMise">
+							<input type="text" name="mise{{ m.id }}" id="{{ m.id }}" value="{% if mises[m.id] is defined %}{{ mises[m.id][0].valeur }}{% endif %}"
+							{% if m.estMatchJoue %} disabled="disabled" {% endif %} />
+						</td>
+						<td>
+							<span id="boutons{{ m.id }}">
+								<div
+									{% if m.estMatchJoue %} class="button boutonValider"
+									{% else %} onClick="mise({{ m.id }});" class="button white boutonValider"
+									{% endif %}>
+									{{ 'valider'|trans }}
+								</div>
+{# 								<div title="Annuler mise" #}
+{# 									{% if m.estMatchJoue %} class="buttonAnnuler"#}
+{# 									{% else %} class="buttonAnnuler red" onclick="annuleMise({{ m.id }});"#}
+{# 									{% endif %}>#}
+{# 									X#}
+{# 								</div>#}
+							</span>
+						</td>
+					</tr>
+					<tr id="couleur{{ couleurLigne }}" style="display: none" class="mises {{ m.id }}" >
+						<td colspan="7" style="padding: 2%;">
+							<table id="tabMises">
+								<tr class="titreMises{{ m.id }}">
+									<th>{{ 'matchs.equipe'|trans }}</th>
+									<th>{{ 'matchs.mise'|trans }}</th>
+									<th>{{ 'matchs.date'|trans }}</th>
+								</tr>
+						{% if mises[m.id] is defined %}
+						{% for mi in mises[m.id] %}
+								<tr id="couleur{{ couleurLigneMises }}" class="couleurs" >
+									<td>{{ mi.equipe.nom }}</td>
+									<td>{{ mi.valeur }}</td>
+									<td>{{ mi.date|date('d/m/Y H:i') }}</td>
+								</tr>
+							{% set couleurLigneMises = (couleurLigneMises + 1) % 2 %}
+						{% endfor %}
+					{% endif %}
+							</table>
+						</td>
+					</tr>
+					{% set couleurLigne = (couleurLigne + 1) % 2 %}
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

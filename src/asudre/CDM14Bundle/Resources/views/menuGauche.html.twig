@@ -1,0 +1,63 @@
+<div id="menuGauche">
+
+{# <img src="http://upload.wikimedia.org/wikipedia/en/thumb/e/e8/WC-2014-Brasil.svg/719px-WC-2014-Brasil.svg.png">#}
+
+<table id="menu">
+	{% if is_granted("ROLE_SUPER_ADMIN") %}
+	<tr>
+		<td id="competition">
+			<a onClick="javascript:chargement(competition);" href="{{ path('asudre_creation_cdm_accueil') }}" >
+				Gestion comp&eacute;tition
+			</a>
+		</td>
+	</tr>
+	{% endif %}
+	{% if is_granted("ROLE_SUPER_ADMIN") %}
+	<tr>
+		<td id="scores">
+			<a onClick="javascript:chargement(scores);" href="{{ path('asudre_scores') }}">
+				Gestion scores
+			</a>
+		</td>
+	</tr>
+	{% endif %}
+	<tr>
+		<td id="matchs">
+			<a onClick="javascript:chargement(matchs);" href="{{ path('asudre_matchs') }}">
+				Matchs
+			</a>
+		</td>
+	</tr>
+	<tr>
+		<td id="classementJoueurs">
+			<a onClick="javascript:chargement(classementJoueurs);" href="{{ path('asudre_classement_joueurs') }}">
+				Classement des joueurs
+			</a>
+		</td>
+	</tr>
+	<tr>
+		<td id="inviteAmis">
+			<a onClick="javascript:chargement(inviteAmis);" href="{{ path('asudre_invite_amis') }}">
+				Invitez vos amis
+			</a>
+		</td>
+	</tr>
+	<tr>
+		<td id="regles">
+			<a onClick="javascript:chargement(regles);" href="{{ path('asudre_regles_jeu') }}">
+				R&egrave;gles du jeu
+			</a>
+		</td>
+	</tr>
+	{% if is_granted("ROLE_SUPER_ADMIN") %}
+	<tr>
+		<td id="console">
+			<a onClick="javascript:chargement(console);" href="{{ path('console') }}">
+				Console
+			</a>
+		</td>
+	</tr>
+	{% endif %}
+</table>
+
+</div>

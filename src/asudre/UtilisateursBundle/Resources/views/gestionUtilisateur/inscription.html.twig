@@ -1,0 +1,37 @@
+{% extends "asudreUtilisateursBundle::layout_gestionUt.html.twig" %}
+
+{% block title %}{{ parent() }}Inscription{% endblock %}
+
+{% block body %}
+
+	{% include "asudreCDM14Bundle::analyticstracking.html.twig" %}
+	
+	<form action="{{ path('asudre_inscription') }}" method="post">
+		<div id="authentification">
+			<table>
+				<tr>
+					<td><label for="username">Login :</label></td>
+					<td><input type="text" id="username" name="username" value="{{ username }}" /></td>
+				</tr>
+				<tr>
+					<td><label for="password">Mot de passe :</label></td>
+					<td><input type="password" id="password" name="password" /></td>
+				</tr>
+				<tr>
+					<td><label for="password2">Confirmation mot de passe :</label></td>
+					<td><input type="password" id="password2" name="password2" /></td>
+				</tr>
+				<tr>
+					<td><label for="courriel">Courriel :</label></td>
+					<td>
+						<input type="text" id="courriel" name="courriel" value="{{ email }}" />
+						<input type="hidden" id="codeInscription" name="codeInscription" value="{{ codeInscription }}" />
+					</td>
+				</tr>
+				<tr><td colspan="2"><span id="erreur">{{ msgErreur }}</span></td></tr>
+				<tr><td><a href="{{ path('fos_user_security_login') }}">Retour authentification</a></td><td style="text-align:right"><input type="submit" value="S'inscrire" /></td></tr>
+			</table>
+		</div>
+	</form>
+
+{% endblock %}

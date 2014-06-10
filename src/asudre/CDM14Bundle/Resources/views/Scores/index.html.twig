@@ -1,0 +1,66 @@
+{% extends "asudreCDM14Bundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }}Scores{% endblock %}
+
+{% block body %}
+		<div id="contenu">
+		<table id="tableau">
+			<thead>
+
+				<tr id="groupe">
+					<th id="points">{{ 'matchs.numero'|trans }}</th>
+					<th>{{ 'matchs.match'|trans }}</th>
+					<th>{{ 'matchs.groupe'|trans }}</th>
+					<th>{{ 'matchs.date'|trans }}</th>
+					<th>{{ 'matchs.score'|trans }}</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+			
+				{% set couleurLigne = 1 %}
+				{% for m in matchs %}
+				
+					<tr id="couleur{{ couleurLigne }}" char="{{ m.id }}" class="couleurs" >
+						<td class="lignesMises" char="{{ m.id }}" id="points">
+							{{ loop.index }}
+						</td>
+						<td class="lignesMises" char="{{ m.id }}" id="equipe">
+							{{ m.equipe1.nom }} - {{ m.equipe2.nom }}
+						</td>
+						<td class="lignesMises" char="{{ m.id }}">
+							{{ m.groupe }}
+						</td>
+						<td class="lignesMises" char="{{ m.id }}">
+							{{ m.date|date('d/m/Y H:i') }}
+						</td>
+						<td class="score">
+							<input type="text" name="scoreEq1-{{ m.id }}" id="scoreEq1-{{ m.id }}" value="{{ m.scoreEq1 }}"
+							{% if not m.estMatchJoue %} disabled="disabled" {% endif %} />
+							-
+							<input type="text" name="scoreEq2-{{ m.id }}" id="scoreEq2-{{ m.id }}" value="{{ m.scoreEq2 }}"
+							{% if not m.estMatchJoue %} disabled="disabled" {% endif %} />
+						</td>
+						<td>
+							<span id="boutons{{ m.id }}">
+								<div
+									{% if not m.estMatchJoue %} class="button boutonValider"
+									{% else %} onClick="score({{ m.id }});" class="button white boutonValider"
+									{% endif %}>
+									{{ 'valider'|trans }}
+								</div>
+{# 								<div title="Annuler mise" #}
+{# 									{% if m.estMatchJoue %} class="buttonAnnuler"#}
+{# 									{% else %} class="buttonAnnuler red" onclick="annuleMise({{ m.id }});"#}
+{# 									{% endif %}>#}
+{# 									X#}
+{# 								</div>#}
+							</span>
+						</td>
+					</tr>
+					{% set couleurLigne = (couleurLigne + 1) % 2 %}
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}

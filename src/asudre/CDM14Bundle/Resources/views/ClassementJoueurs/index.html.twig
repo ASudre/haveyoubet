@@ -1,0 +1,66 @@
+{% extends "asudreCDM14Bundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }}Classement des joueurs{% endblock %}
+
+{% block body %}
+	<div id="contenu">
+		<form action="{{ path('asudre_classement_joueurs') }}" method="POST" id="formClassementJoueurs" >
+			<select name="selectMatch">
+				{% for m in matchs %}
+					<option {% if not m.estMatchJoue %} disabled="disabled" {% endif %} 
+							value="{{ m.id }}" 
+							{% if idMatchAffiche == m.id %} selected {% endif %}
+					>
+						{{ loop.index }} : {{ m.equipe1.nom }} - {{ m.equipe2.nom }}
+					</option>
+				{% endfor %}
+			</select>
+			<select name="selectGroupe">
+					<option value="0">
+						<i>Tous</i>
+					</option>
+				{% for g in groupes %}
+					<option value="{{ g.id }}" {% if idGroupeAffiche == g.id %} selected {% endif %}>
+						{{ g.nomGroupe }}
+					</option>
+				{% endfor %}
+			</select>
+			<span id="bouton">
+				<div onClick="javascript:soumetClassementJoueurs()" class="button white boutonValider" >
+					{{ 'valider'|trans }}
+				</div>
+			</span>
+		</form>
+		</br>
+		{% if msgErreur is defined %}
+			<div style="text-align: center;">
+				<p>{{ msgErreur }}<p>
+			</div>
+		{% else %}
+			<table id="tableau">
+				<thead>
+	
+					<tr id="groupe">
+						<th id="points">{{ 'joueurs.numero'|trans }}</th>
+						<th>{{ 'joueurs.nom'|trans }}</th>
+						<th>{{ 'joueurs.cagnotte'|trans }}</th>
+						<th>{{ 'joueurs.dernierGain'|trans }}</th>
+					</tr>
+				</thead>
+				<tbody>
+				
+					{% set couleurLigne = 1 %}
+					{% for u in utilisateurs %}
+						<tr id="couleur{{ couleurLigne }}" class="couleurs" >
+							<td>{{ loop.index }}</td>
+							<td>{{ u.username }}</td>
+							<td>{{ u.cagnotte|round(2) }}</td>
+							<td>{{ u.gain|round(2) }}</td>
+						</tr>
+						{% set couleurLigne = (couleurLigne + 1) % 2 %}
+					{% endfor %}
+				</tbody>
+			</table>
+		{% endif %}
+	</div>
+{% endblock %}

@@ -1,0 +1,686 @@
+/* Général */
+
+html, body {
+	height: 100%;
+	position: relative;
+	margin: 0px;
+	font-family: Tahoma, sans-serif;
+	font-size: 14px;
+}
+
+body {
+	overflow-x: hidden;
+}
+
+div#contenu {
+	position: absolute;
+	width: 83%;
+	top: 32px;
+	bottom: 25px;
+	right: 0px;
+	overflow: inherit;
+	background-color: white;
+}
+
+div#contenuErreur {
+	overflow: auto;
+	top: 99px;
+	bottom: 25px;
+	overflow: auto;
+	background-color: white;
+}
+
+div#menuGauche {
+	z-index: 1;
+	overflow: auto;
+	overflow-x: hidden;
+	position: absolute;
+	top: 32px;
+	bottom: 25px;
+	float: left;
+	left: 0px;
+	width: 17%;
+	border-right: 1px solid #C9C299;
+	padding-top: 30px;
+	margin-right: 2px;
+}
+
+div#menuGauche table {
+	width: 100%;
+	border: none;
+	border-collapse: collapse;
+	
+}
+
+div#menuGauche table#info {
+	padding-left: 3%;
+}
+
+div#menuGauche table#menu td {
+	padding-left: 3%;
+	height: 30px;
+	border-spacing: 0px;
+}
+
+div#menuGauche a {
+	display: block;
+	height: 100%;
+	margin-right: 3%;
+	padding-left: 5px;
+	padding-top: 7px;
+	text-decoration: none;
+	color: black;
+}
+
+div#menuGauche a:hover {
+	background-color: #dbdbdb;
+	padding-left: 5%;
+}
+
+td#cagnotte {
+	padding-left: 3%;
+}
+
+td#joker {
+	padding-left: 3%;
+}
+
+div#infos {
+	border-bottom: 1px solid #C9C299;
+	height: 60px;
+	background-image: url("../img/texture.gif");
+}
+
+div#infos table {
+	height: 60px;
+	width: 300px;
+}
+
+div#piedDePage {
+	background-color: #3a3a3a;
+	position: absolute;
+	width: 100%;
+	height: 25px;
+	bottom: 0px;
+	color: white;
+}
+
+div#piedDePage table {
+	width: 100%;
+	text-align: center;
+}
+
+h1 {
+	text-align: center;
+}
+
+h3 {
+	text-align: center;
+}
+
+hr {
+	height: 1px;
+	margin: 0px;
+	padding: 0px;
+	color: gray;
+	width: 100%;
+}
+
+#asterisque {
+	position: relative;
+	color: red;
+	top: -3px;
+	font-size: x-small;
+	right: -1px;
+}
+
+#erreur {
+	color: red;
+}
+
+#attenteVue {
+	position: relative;
+	margin-left: 50%;
+	margin-top: 100px;
+}
+
+/* fin Général */
+
+/* En-tete */
+img#titre {
+	position: relative;
+	display: block;
+	height: 80px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 10px;
+}
+
+div#menuBar {
+	z-index: 1;
+	background-color: #3a3a3a;
+	height: 30px;
+	width: 100%;
+	padding: 1px;
+	vertical-align: middle;
+	border: none;
+}
+
+div#menuBar div {
+	position: relative;
+	float: left;
+	height: 30px;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 6px;
+	
+	margin-right: 1px;
+}
+
+div#menuBar div a {
+	position: relative;
+	top: -6px;
+	float: left;
+	height: 24px;
+	
+	padding-top: 6px;
+
+	padding-left: 5px;
+	padding-right: 5px;
+		
+	background-color: #3a3a3a;
+
+	text-decoration: none;
+	color: white;
+}
+
+div#menuBar a:ACTIVE {
+	text-decoration: underline;
+}
+
+div#menuBar a:HOVER {
+	background-color: #4d4c4c;
+}
+
+div#menuBar div#menuDroite {
+	float: right;
+	margin-right: 1px;
+}
+
+div#ongletBienvenue {
+	width: 17%;
+	padding-top: 15px;
+	padding-left: 10px;
+}
+
+/* fin En-tete */
+
+/* Page authentification */
+
+div#authentification {
+	margin: auto;
+	padding: 5px;
+	border-color: black;
+	border-width: 2px;
+	width: 400px;
+	background-color: #c9e7f1;
+	border-radius: 5px;
+	position: relative;
+	top: 100px;
+}
+
+div#authentification table {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div#msg {
+	text-align: center;
+	border-radius: 3px 3px;
+	background-color: yellow;
+	position: absolute;
+	left: 50%;
+	top: 0px;
+	z-index: 1;
+}
+
+div#msg p{
+	margin: 4px;
+	position: relative;
+	top: 1px;	
+}
+
+
+/* fin Page authentification */
+
+/* Tableau */
+
+div#titre {
+	height: 30px;
+	position: absolute;
+	right: 0px;
+	top: 32px;
+	width: 80%;
+	margin-left: 5px;
+	background-color: white;
+}
+
+div#titre table {
+	height: 30px;
+}
+
+table#tableau {
+	width: 100%;
+/* 	background-color: #e1e1e1; */
+	border-spacing: 0px;
+}
+
+.lignesMises {
+	height: 30px;	
+}
+
+.infosMatch {
+	visibility: hidden;
+}
+
+#infosMatch table {
+	border: none;
+}
+
+#infosMatch table td {
+	border: none;
+}
+
+#infosMatch table th {
+	border: none;
+}
+
+.lignes {
+	height: 30px;
+}
+
+tr.cotes {
+	background-color: #F8F8F8;
+}
+
+.cotes table {
+	width: 100%;
+	border-spacing: 0px;
+	border-left: solid 1px #C9C299;
+	border-bottom: solid 1px #C9C299;
+	font-size: small;
+}
+
+.ontMise {
+	text-decoration: none;
+}
+
+span.gain {
+	width: 100%;
+	font-size: 90%;
+}
+
+.cotes table tr td, .cotes table tr th {
+	border-top: solid 1px;
+	border-right: solid 1px;
+	border-color: #C9C299;
+	width: 20%;
+	height: 15px;
+}
+
+td#titre {
+	text-align: left;
+}
+
+table#tabMises {
+	border-collapse: collapse;
+	border: solid 1px #C9C299;
+	background-color: #D8D8D8;
+	width: 100%;
+}
+
+table#tabMises th, table#tabMises td {
+	padding: 5px;
+}
+
+table#tableau tr#couleur1 {
+	background-color: #FAFAFA;
+}
+
+table#tableau tr#couleur0 {
+	background-color: #E6E6E6;
+}
+
+table#tableau tr#couleur1.couleurs:HOVER {
+	background-color: #D8D8D8;
+}
+
+table#tableau tr#couleur0.couleurs:HOVER {
+	background-color: #D8D8D8;
+}
+
+table#tableau td {
+	text-align: center;
+	border-right: 1px solid #C9C299;
+	border-bottom: 1px solid #C9C299;
+}
+
+table#tableau th {
+	background-color: white;
+	border-right: 1px solid #C9C299;
+	border-bottom: 1px solid #C9C299;
+}
+
+table#tableau td#equipe {
+	text-align: left;
+	padding-left: 4%;
+}
+
+#colScroll {
+	max-width: 100px;
+	width: 12px;
+}
+
+#points {
+	width: 60px;
+	max-width: 60px;
+	text-align: center;
+}
+
+/* fin Tableau */
+
+/* Classement équipes */
+
+.groupe {
+	width: 30px;
+	max-width: 30px;
+	background-color: white;
+}
+
+#groupeBorder {
+	border-top: 1px solid #C9C299;
+}
+
+
+/* Mises */
+
+tr.cotes td {
+	border: 1px;
+}
+
+#colDate {
+	max-width: 100px;
+	width: 100px;
+}
+
+#colEquipe {
+	max-width: 100px;
+	width: 100px;
+}
+
+#colGroupe {
+	
+}
+
+#colMise {
+	width: 50px;
+}
+
+#colValider {
+	max-width: 100px;
+	width: 100px;
+}
+
+td.selectEquipe {
+	padding: 0px;
+}
+
+td.selectEquipe select {
+	width: 100px;
+}
+
+td.selectMise input {
+	text-align: center;
+}
+
+td.score input {
+	text-align: center;
+}
+
+/* indicateurs */
+div.indic {
+	width: 10px;
+	height: 10px;
+	margin: auto;
+	border-radius: 10px 10px;
+}
+
+div.couleur0 {
+	background-color: gray;
+}
+
+div.couleur1 {
+	background-color: #0B6121;
+}
+
+div.couleur2 {
+	background-color: #8A0808;
+}
+
+div.couleur3 {
+	background-color: #424242;
+}
+
+div.couleur4 {
+	background-color: #00f000;
+}
+
+div.couleur5 {
+	background-color: red;
+}
+
+/* fin Mises */
+
+/* Mises +infos */
+
+table#infosMatch {
+	width: 80%;
+    margin-left:auto; 
+    margin-right:auto;
+	background-image: url("../img/texture.gif");
+	border-radius: 3px 3px;
+	border-collapse:collapse;
+}
+
+table#infosMatch th#titre {
+	text-align: right;
+	vertical-align: top;
+	width: 100px;
+}
+
+table#infosMatch td#cote {
+	text-align: center;
+}
+
+table#infosMatch td#res {
+	padding-left: 10px;
+}
+
+table#infosMatch tr#matchAffiche {
+	background-color: white;
+}
+
+/* fin Mises +infos */
+
+/* Classement joueurs */
+
+#selectClassementJoueurs {
+	position: relative;
+	left: 30%;
+	bottom: 27px;
+}
+
+/* fin classement joueurs */
+
+/* Admin */
+#score input {
+	width: 24px;
+}
+
+.button {
+	display: inline-block;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	font-size: 11px;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	-webkit-border-radius: .5em; 
+	-moz-border-radius: .5em;
+	border-radius: .5em;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	box-shadow: 0 1px 2px rgba(0,0,0,.2);
+}
+
+.boutonValider {
+	padding: .3em 1em .4em;
+	bottom: 5px;
+}
+
+
+.boutonInfos {
+	float:right;
+	margin-right: 10px;
+	padding: .1em .2em;
+}
+
+.button:hover {
+	text-decoration: none;
+}
+
+.button:active {
+	position: relative;
+	top: 1px;
+}
+
+/* boutons */
+.white {
+	color: #606060;
+	border: solid 1px #b7b7b7;
+	background: #fff;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ededed));
+	background: -moz-linear-gradient(top,  #fff,  #ededed);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed');
+}
+.white:hover {
+	background: #ededed;
+	background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#dcdcdc));
+	background: -moz-linear-gradient(top,  #fff,  #dcdcdc);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dcdcdc');
+}
+.white:active {
+	color: #999;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#fff));
+	background: -moz-linear-gradient(top,  #ededed,  #fff);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#ffffff');
+}
+
+.buttonAnnuler {
+	display: inline-block;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+	font: 11px/100% Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	padding: .3em .4em .4em;
+	text-shadow: 0 1px 1px rgba(0,0,0,.3);
+	-webkit-border-radius: .4em; 
+	-moz-border-radius: .4em;
+	border-radius: .4em;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	box-shadow: 0 1px 2px rgba(0,0,0,.2);
+}
+.buttonAnnuler:hover {
+	text-decoration: none;
+}
+.buttonAnnuler:active {
+	position: relative;
+	top: 1px;
+}
+
+.red {
+	color: #faddde;
+	border: solid 1px #980c10;
+	background: #d81b21;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ed1c24), to(#aa1317));
+	background: -moz-linear-gradient(top,  #ed1c24,  #aa1317);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ed1c24', endColorstr='#aa1317');
+}
+.red:hover {
+	background: #b61318;
+	background: -webkit-gradient(linear, left top, left bottom, from(#c9151b), to(#a11115));
+	background: -moz-linear-gradient(top,  #c9151b,  #a11115);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#c9151b', endColorstr='#a11115');
+}
+.red:active {
+	color: #de898c;
+	background: -webkit-gradient(linear, left top, left bottom, from(#aa1317), to(#ed1c24));
+	background: -moz-linear-gradient(top,  #aa1317,  #ed1c24);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#aa1317', endColorstr='#ed1c24');
+}
+
+/* gestion compte */
+#gestionCompte {
+	padding: 20px;
+}
+
+#gestionCompte div {
+	width: 50%;
+	padding: 5px;
+	background-image: url("../img/texture.gif");
+	border-radius: 3px 3px;
+}
+
+#gestionCompte div table {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+a.creerGroupe {
+	position: absolute;
+	top: 0px;
+	left: 170px;
+}
+
+table.invitations {
+	border: 1px solid #C9C299;
+	border-collapse: collapse;
+	text-align: center;
+}
+
+table.invitations td, table.invitations tr, table.invitations th {
+	border: 1px solid #C9C299;
+	padding: 5px;
+}
+
+.infoIcone {
+	float: right;
+	padding-left: 5px;
+}
+
+.input {
+	width: 200px;
+}
+
+.nomGroupe {
+	width: 100px;
+}
+
+.emailArea {
+	width: 130px;
+	height: 20px;
+	max-width: 420px;
+}

@@ -1,0 +1,35 @@
+{% extends "asudreCDM14Bundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }}Invite tes amis{% endblock %}
+
+{% block body %}
+	<div id="contenu">
+		<ol>
+			<li>
+				<h2>Objectif</h2>
+				Obtenir <strong>la cagnotte la plus élevée</strong> possible à la fin de la coupe du Monde se terminant le 13 Juillet 2014.
+				<strong>63 matchs</strong> vont être misés (la petite finale ne fera pas parti du concours).
+			</li>
+			<li>
+				<h2>Comment miser ?</h2>
+				Pour miser il faut se rendre sur la page <a onClick="javascript:chargement(matchs);" href="{{ path('asudre_matchs') }}">Matchs</a>. Les <strong>mises sont libres et n'ont pas de limite</strong> sauf le restant de votre cagnotte. Vous avez <strong>initialement 10 000 jetons</strong> pour miser, il n'y a pas de possibilité de se recaver. Les mises d'un match sont visibles en cliquant sur le bouton à gauche de la ligne de ce match.
+							<br/>ex :<div class="button white boutonValider">
+								1
+							</div>
+				<br/><br/>Il est possible de miser jusqu'à l'heure coup d'envoi du match.
+				<br/><br/><strong>Attention</strong>, vous ne pouvez <strong>pas annuler une mise !!</strong> En revanche, <strong>il est possible de miser autant de fois que souhaité</strong> pour un match donné (tant que votre cagnotte vous le permet).
+				<br/><br/>Si vous <strong>ne misez pas pour un match</strong>, vous n'avez <strong>pas de pénalité</strong>.
+			</li>
+			<li>
+				<h2>Calcul des cotes</h2>
+				Les valeurs des cotes est mis à jour chaque fois qu'un joueur mise. Les cotes évoluent donc jusqu'à la fermeture des mises à l'heure du coup d'envoi du match. Le calcul des gains se fait à partir des cotes obtenues à la clôture des mises, jusque là elles ne sont qu'un indicateur de l'évolution des mises des joueurs. Les cotes sont communes à tous les joueurs, quelque soit le groupe. Pour calculer son gain (lorsque le résultat est juste), il suffit de multiplier sa mise avec la cote de l'équipe vainqueur.
+			</li>
+			
+			<li>
+				<h2>Groupes de joueurs</h2>
+				Vous avez la possibilité d'inviter des joueurs. Pour cela, il faut au préalable créer un groupe, qui permettra de sélectionner les invités dans un classement personnalisé.
+			</li>
+			
+		</ol>
+	</div>
+{% endblock %}

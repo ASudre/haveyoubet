@@ -1,0 +1,16 @@
+{% extends "asudreCDM14Bundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }}Matchs{% endblock %}
+
+{% block body %}
+
+<div id="contenu">
+	<h1>Application permettant la création des groupes, équipes et matchs de la coupe du monde 2014.</h1>
+	
+	<ul>
+		<li><a href="{{ path('asudre_creation_groupes') }}">Création, modification des groupes</a></li>
+		<li><a href="{{ path('asudre_creation_equipes') }}">Création, modification des équipes</a></li>
+		<li><a href="{{ path('asudre_creation_matchs') }}">Création, modification des matchs</a></li>
+	</ul>
+</div>
+{% endblock %}
