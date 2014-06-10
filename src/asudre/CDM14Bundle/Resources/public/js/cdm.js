@@ -18,7 +18,7 @@ function mise(idMatch) {
 		return;
 	}
 	
-	$('span#boutons' + idMatch).hide().after('<img id="imgLoading" name="imgLoading' + idMatch + '" src="/symfony/web/bundles/asudrecdm14/images/ajax-loader.gif" />');
+	$('span#boutons' + idMatch).hide().after('<img id="imgLoading" name="imgLoading' + idMatch + '" src="/web/bundles/asudrecdm14/images/ajax-loader.gif" />');
 	
 	var param = "match=" + idMatch;
 	param += "&select=" + $("select[name=select" + idMatch + "]").val();
@@ -153,7 +153,7 @@ function score(idMatch) {
 		return;
 	}
 	
-	$('span#boutons' + idMatch).hide().after('<img id="imgLoading" name="imgLoading' + idMatch + '" src="/symfony/web/bundles/asudrecdm14/images/ajax-loader.gif" />');
+	$('span#boutons' + idMatch).hide().after('<img id="imgLoading" name="imgLoading' + idMatch + '" src="/web/bundles/asudrecdm14/images/ajax-loader.gif" />');
 	
 	var param = "idMatch=" + idMatch;
 	param += "&scoreEquipe1=" + $("#scoreEq1-" + idMatch).val();
@@ -189,7 +189,7 @@ function creationGroupe() {
 		displayMsg("Veuillez entrer un nom de groupe.");
 	}
 	
-	$('span#boutonGroupe').hide().after('<img id="imgLoading" name="imgLoadingGroupe" src="/symfony/web/bundles/asudrecdm14/images/ajax-loader.gif" />');
+	$('span#boutonGroupe').hide().after('<img id="imgLoading" name="imgLoadingGroupe" src="/web/bundles/asudrecdm14/images/ajax-loader.gif" />');
 	
 	var param = "nomGroupe=" + nomGroupe;
 	
@@ -237,7 +237,7 @@ function inviter() {
 		displayMsg("Veuillez entrer remplir correctement les deux champs.");
 	}
 	
-	$('span#boutonInvitation').hide().after('<img id="imgLoading" name="imgLoadingInvitation" src="/symfony/web/bundles/asudrecdm14/images/ajax-loader.gif" />');
+	$('span#boutonInvitation').hide().after('<img id="imgLoading" name="imgLoadingInvitation" src="/web/bundles/asudrecdm14/images/ajax-loader.gif" />');
 	
 	var param = "courriels=" + courriels;
 	param += "&idGroupe=" + idGroupe;
@@ -290,7 +290,7 @@ function ajouterJoueur() {
 		return;
 	}
 	
-	$('span#boutonAjoutJoueur').hide().after('<img id="imgLoading" name="imgLoadingAjoutJoueur" src="/symfony/web/bundles/asudrecdm14/images/ajax-loader.gif" />');
+	$('span#boutonAjoutJoueur').hide().after('<img id="imgLoading" name="imgLoadingAjoutJoueur" src="/web/bundles/asudrecdm14/images/ajax-loader.gif" />');
 	
 	var param = "pseudonyme=" + pseudonyme;
 	param += "&idGroupe=" + idGroupe;
