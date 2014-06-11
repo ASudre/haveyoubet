@@ -15,6 +15,8 @@ class Invitations
 	
 	const OK = 0;
 	const ERREUR_VALEURS_FORM = -1;
+	const ERREUR_PSEUDONYME_INVALIDE = -2;
+	const ERREUR_DEJA_DANS_GROUPE = -3;
 	
     /**
      * @var integer

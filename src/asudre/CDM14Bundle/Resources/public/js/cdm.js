@@ -283,7 +283,7 @@ function inviter() {
 function ajouterJoueur() {
 	
 	var pseudonyme = $('#pseudonyme').val();
-	var idGroupe = $('select#groupe').val();
+	var idGroupe = $('#selectGroupe option:selected').val();
 	
 	if(pseudonyme.length <= 0 && idGroupe != parseInt(idGroupe)) {
 		displayMsg("Veuillez entrer remplir correctement les deux champs.");
@@ -312,22 +312,22 @@ function ajouterJoueur() {
 			else {
 				displayMsg($(xml).find('messageInfo').text());
 				
-				var date = $(xml).find('date').text();
 				var pseudonyme = $(xml).find('pseudonyme').text();
 				var nomGroupe = $(xml).find('nomGroupe').text();
 				
 				// Affichage de la nouvelle invitation
 				$('tr[type="initAjoutJoueur"]').after("" +
 						"<tr>" +
-						"	<td>" + pseudonyme + "</td>" +
 						"	<td>" + nomGroupe + "</td>" +
-						"	<td>" + date + "</td>" +
+						"	<td>" + pseudonyme + "</td>" +
 						"	<td></td>" +
 				"</tr>");
 
 			}
+			
+			$('div#contenu').scrollTop($('div#contenu').prop('scrollHeight'));
 		}
-	});	
+	});
 }
 
 function displayMsg(msg) {
@@ -413,25 +413,29 @@ function chargeGroupe() {
 			else {
 				displayMsg($(xml).find('messageInfo').text());
 				
-				var date = $(xml).find('date').text();
+				var groupe = $(xml).find('groupe').text();
 				var joueurs = $(xml).find('joueur');
+				
+				$('.joueursGroupe').remove();
 				
 				for (var i = 0; i < joueurs.length; i++) {
 					// Affichage de la nouvelle invitation
 					$('tr[type="initAjoutJoueur"]').after("" +
-							"<tr>" +
+							"<tr class=\"joueursGroupe\" >" +
 							"	<td></td>" +
 							"	<td>" + $(joueurs[i]).text() + "</td>" +
 							"	<td>" +
-							"		<span id=\"boutonSupprimerJoueur\">" +
-							"			<div onClick=\"supprimerJoueur();\" class=\"buttonAnnuler red\">" +
-							"				X" +
-							"			</div>" +
-							"		</span>" +
+//							"		<span id=\"boutonSupprimerJoueur\">" +
+//							"			<div onClick=\"supprimerJoueur();\" class=\"buttonAnnuler red\">" +
+//							"				X" +
+//							"			</div>" +
+//							"		</span>" +
 							"	</td>" +
-							"	<td></td>" +
 							"</tr>");
 				}
+				
+				$('div#contenu').scrollTop($('div#contenu').prop('scrollHeight'));
+				
 			}
 		}
 	});	

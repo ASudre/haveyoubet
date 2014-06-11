@@ -47,29 +47,30 @@ class InvitationsController extends Controller
 	 * Récupère les joueurs d'un groupe
 	 */
 	public function joueursGroupeAction() {
-		// Récupération du service des utilisateurs
+		// Récupération du service des utilisateurs et groupe
 		$this->serviceUtilisateurs = $this->container->get('asudre.serviceUtilisateurs');
+		$this->serviceGroupes = $this->container->get('asudre_serviceGroupes');
 		
 		$request = $this->getRequest();
 		$idGroupe = $request->request->get("idGroupe");
 		
-		$retourXMLJoueursGroupe = $this->recuperationJoueursGroupe($idGroupe);
-		
-		return new Response($retourXMLJoueursGroupe);
-	}
-	
-	/**
-	 * Réupcère les joueurs d'un groupe
-	 * @param unknown $idGroupe
-	 */
-	private function recuperationJoueursGroupe($idGroupe) {
+		$groupe = null;
 		$joueurs = null;
 		
+		// Récupération de l'utilisateur connecté
+		$user = $this->get('security.context')->getToken()->getUser();
+		
 		if($idGroupe !== null && is_numeric($idGroupe) && is_int($idGroupe + 0)) {
-			$joueurs = $this->serviceUtilisateurs->recuperationUtilisateursGroupe($idGroupe);
+		
+			// On vérifie que le groupe est bien un groupe de l'utilisateur courant
+			if($this->serviceGroupes->estCreateurGroupe($idGroupe, $user)) {
+				
+				$groupe = $this->serviceGroupes->getGroupe($idGroupe);
+				$joueurs = $this->serviceUtilisateurs->recuperationUtilisateursGroupe($idGroupe);
+			}
 		}
 		
-		return $this->retourXMLJoueursGroupe($joueurs);
+		return new Response($this->retourXMLJoueursGroupe($groupe, $joueurs));
 	}
 	
 	/**
@@ -214,24 +215,46 @@ class InvitationsController extends Controller
 	
 		// Récupération de l'utilisateur connecté
 		$user = $this->get('security.context')->getToken()->getUser();
-	
-		if(is_numeric($idGroupe) && is_int($idGroupe + 0)) {
-	
-			// On vérifie que le groupe est bien un groupe de l'utilisateur courant
-			if($this->serviceGroupes->estCreateurGroupe($idGroupe, $user)) {
-					
-				$groupe = $this->serviceGroupes->getGroupe($idGroupe);
+
+		if($idGroupe != "" && is_numeric($idGroupe) && is_int($idGroupe + 0)) {
+			
+			if($pseudonyme !== null && $pseudonyme != "") {
 				
-				try {
-					$this->serviceUtilisateurs->ajoutGroupeJoueur($groupe, $pseudonyme);
-					$retour = Invitations::OK;
+				// vérifier si le pseudonyme existe
+				$joueur = $this->serviceUtilisateurs->getUtilisateur($pseudonyme);
+				
+				if($joueur !== null) {
+					
+					// vérifier si le joueur n'est pas déjà dans le groupe
+					if(!$this->serviceGroupes->estGroupeUtilisateur($idGroupe, $joueur->getId())) {
+						
+						// On vérifie que le groupe est bien un groupe de l'utilisateur courant
+						if($this->serviceGroupes->estCreateurGroupe($idGroupe, $user)) {
+								
+							$groupe = $this->serviceGroupes->getGroupe($idGroupe);
+							
+							try {
+								$this->serviceUtilisateurs->ajoutGroupeJoueur($groupe, $pseudonyme);
+								$retour = Invitations::OK;
+							}
+							catch (Exception $e) {
+								$retour = Invitations::ERREUR_VALEURS_FORM;
+							}
+						}
+						else {
+							$retour = Invitations::ERREUR_VALEURS_FORM;
+						}
+					}
+					else {
+						$retour = Invitations::ERREUR_DEJA_DANS_GROUPE;
+					}
 				}
-				catch (Exception $e) {
-					$retour = Invitations::ERREUR_VALEURS_FORM;
+				else {
+					$retour = Invitations::ERREUR_PSEUDONYME_INVALIDE;
 				}
 			}
 			else {
-				$retour = Invitations::ERREUR_VALEURS_FORM;
+				$retour = Invitations::ERREUR_PSEUDONYME_INVALIDE;
 			}
 		}
 		else {
@@ -273,6 +296,14 @@ class InvitationsController extends Controller
 			$xml.=
 			"<msgErreur>".$this->get('translator')->trans('erreur.valeurs.form')."</msgErreur>";
 		}
+		elseif ($retour == Invitations::ERREUR_PSEUDONYME_INVALIDE) {
+			$xml.=
+			"<msgErreur>".$this->get('translator')->trans('erreur.pseudonyme.invalide')."</msgErreur>";
+		}
+		elseif ($retour == Invitations::ERREUR_DEJA_DANS_GROUPE) {
+			$xml.=
+			"<msgErreur>".$this->get('translator')->trans('erreur.deja.dans.groupe')."</msgErreur>";
+		}
 		else {
 	
 		}
@@ -284,11 +315,16 @@ class InvitationsController extends Controller
 	 * Structure les données retounées pour la mise à jour de l'affichage
 	 * @param unknown $groupes
 	 */
-	private function retourXMLJoueursGroupe($arrayJoueurs) {
+	private function retourXMLJoueursGroupe($groupe, $arrayJoueurs) {
 		$xml = "";
 
-		if($arrayJoueurs !== null) {
+		if($groupe !== null && $arrayJoueurs !== null) {
 			$joueurs = "";
+			$nomGroupe = $groupe->getNomGroupe();
+			
+			$msgInfo = $this->get('translator')->trans('msg.info.joueursGroupe',
+					array('%groupe%' => $nomGroupe)
+			);
 			
 			foreach ($arrayJoueurs as $index => $joueur) {
 				$joueurs .=	"<joueur>" .$joueur. "</joueur>";
@@ -300,7 +336,8 @@ class InvitationsController extends Controller
 				"<date>" .date("d/m/Y H:i"). "</date>" .
 				"<joueurs>" .$joueurs. "</joueurs>" .
 				"<message>" . "</message>" .
-				"<messageInfo></messageInfo>" .
+				"<groupe>" . $nomGroupe . "</groupe>" .
+				"<messageInfo>" . $msgInfo . "</messageInfo>" .
 			"</invitation>";
 	
 		}

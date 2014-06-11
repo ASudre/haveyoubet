@@ -111,7 +111,8 @@ class UtilisateurRepository extends EntityRepository
 		$query = $this->_em->createQuery('SELECT ut
 				FROM asudreUtilisateursBundle:Utilisateur ut
 				JOIN ut.groupesJoueurs g
-				WHERE g.id = :idGroupe');
+				WHERE g.id = :idGroupe
+				AND ut.id != g.createur');
 		$query->setParameters(array(
 				'idGroupe' => $idGroupe
 		));

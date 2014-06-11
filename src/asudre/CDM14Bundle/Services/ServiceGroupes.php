@@ -64,10 +64,10 @@ class ServiceGroupes
 	/**
 	 * Vérifie qu'un utilisateur est bien membre du groupe
 	 * @param unknown $idGroupe
-	 * @param unknown $utilisateur
+	 * @param unknown $idUtilisateur
 	 */
-	public function estGroupeUtilisateur($idGroupe, $utilisateur) {
-		return $this->groupesRepo->estGroupeUtilisateur($idGroupe, $utilisateur)[0][1] != 0;
+	public function estGroupeUtilisateur($idGroupe, $idUtilisateur) {
+		return $this->groupesRepo->estGroupeUtilisateur($idGroupe, $idUtilisateur)[0][1] != 0;
 	}
 	
 	/**

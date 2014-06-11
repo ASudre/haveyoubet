@@ -89,6 +89,14 @@
 					<source>erreur.valeurs.form</source>
 					<target>Les valeurs fournies sont incorrectes.</target>
 	    		</trans-unit>
+				<trans-unit id="54">
+					<source>erreur.pseudonyme.invalide</source>
+					<target>Cet utilisateur n'existe pas.</target>
+	    		</trans-unit>
+				<trans-unit id="55">
+					<source>erreur.deja.dans.groupe</source>
+					<target>Cet utilisateur appartient déjà à ce groupe.</target>
+	    		</trans-unit>
 	    	</group>
 	    	<group id="msg_info-mises">
 				<trans-unit id="17">
@@ -110,6 +118,10 @@
 				<trans-unit id="52">
 					<source>msg.info.ajoutJoueur</source>
 					<target>%pseudonyme% ajouté au groupe %groupe%.</target>
+	            </trans-unit>
+				<trans-unit id="53">
+					<source>msg.info.joueursGroupe</source>
+					<target>Liste des joueurs du groupe %groupe%.</target>
 	            </trans-unit>
 	    	</group>
 	    	<group id="entete-classement-joueurs">

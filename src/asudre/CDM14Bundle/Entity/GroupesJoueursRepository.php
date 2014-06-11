@@ -99,13 +99,13 @@ class GroupesJoueursRepository extends EntityRepository
 	 * @param unknown $idGroupe
 	 * @param unknown $utilisateur
 	 */
-	public function estGroupeUtilisateur($idGroupe, $utilisateur) {
+	public function estGroupeUtilisateur($idGroupe, $idUtilisateur) {
 		$query = $this->_em->createQuery('SELECT count(ut) FROM asudreUtilisateursBundle:Utilisateur ut
 										JOIN ut.groupesJoueurs g
 										WHERE g.id = :idGroupe AND ut.id = :utilisateur');
 		$query->setParameters(array(
 				'idGroupe' => $idGroupe,
-				'utilisateur' => $utilisateur
+				'utilisateur' => $idUtilisateur
 		));
 	
 		return $query->getScalarResult();
