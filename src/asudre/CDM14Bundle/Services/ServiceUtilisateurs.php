@@ -72,7 +72,7 @@ class ServiceUtilisateurs
 	 * @param unknown $username
 	 */
 	public function getUtilisateur($username) {
-		$this->utilisateursRepo->getUtilisateurByUsername($username);
+		return $this->utilisateursRepo->getUtilisateurByUsername($username)[0];
 	}
 	
 	/**
