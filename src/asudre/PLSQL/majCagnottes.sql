@@ -22,7 +22,7 @@ BEGIN
 		gain,
 		(select IFNULL(sum(IFNULL(valeur, 0)), 0) from mises where mises.utilisateur_id = ut.id and mises.match_id = idMatch and mises.equipe_id = idEquipe1) as sommeMisesEq1,
 		(select IFNULL(sum(IFNULL(valeur, 0)), 0) from mises where mises.utilisateur_id = ut.id and mises.match_id = idMatch and mises.equipe_id = idEquipe2) as sommeMisesEq2,
-		(select IFNULL(sum(IFNULL(valeur, 0)), 0) from mises where mises.utilisateur_id = ut.id and mises.match_id = idMatch and mises.equipe_id = 204) as sommeMisesNul
+		(select IFNULL(sum(IFNULL(valeur, 0)), 0) from mises where mises.utilisateur_id = ut.id and mises.match_id = idMatch and mises.equipe_id = 33) as sommeMisesNul
 	from utilisateur as ut
 		left join mises as mi
 			on ut.id = mi.utilisateur_id and
