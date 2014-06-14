@@ -57,14 +57,18 @@ class ClassementJoueursController extends Controller
     			// Vérifie si le score du match a été entré par l'admin
     			if($match->getScoreEq1() !== null && $match->getScoreEq2() !== null) {
     				$match->setEstMatchJoue(true);
+    				
+    				// à la fin de la boucle, contiendra le dernier match dont le score a été validé
+	   				$dernierMatch = $match;
     			}
 
     			// Si on n'est pas encore tombé sur le match à afficher
     			if($matchAffiche == null && $match->getId() == $idMatch) {
     				$matchAffiche = $match;
+    				// On peut sortir de la boucle si on a le match a afficher
+    				break;
     			}
     			
-   				$dernierMatch = $match;
 
     		}
     	}
