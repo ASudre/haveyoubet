@@ -65,3 +65,7 @@ asudre_invitation:
     defaults: { _controller: asudreCDM14Bundle:Invitations:invitation }
     options:
         expose: true
+        
+asudre_changer_langue:
+    pattern:  /ChangeLangue
+    defaults: { _controller: asudreCDM14Bundle:ChangeLangue:index }

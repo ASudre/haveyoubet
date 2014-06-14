@@ -7,7 +7,7 @@
 	<tr>
 		<td id="competition">
 			<a onClick="javascript:chargement(competition);" href="{{ path('asudre_creation_cdm_accueil') }}" >
-				Gestion comp&eacute;tition
+				{{ 'menu.numero'|trans }}
 			</a>
 		</td>
 	</tr>
@@ -16,7 +16,7 @@
 	<tr>
 		<td id="scores">
 			<a onClick="javascript:chargement(scores);" href="{{ path('asudre_scores') }}">
-				Gestion scores
+				{{ 'menu.numero'|trans }}
 			</a>
 		</td>
 	</tr>
@@ -24,28 +24,28 @@
 	<tr>
 		<td id="matchs">
 			<a onClick="javascript:chargement(matchs);" href="{{ path('asudre_matchs') }}">
-				Matchs
+				{{ 'menu.matchs'|trans }}
 			</a>
 		</td>
 	</tr>
 	<tr>
 		<td id="classementJoueurs">
 			<a onClick="javascript:chargement(classementJoueurs);" href="{{ path('asudre_classement_joueurs') }}">
-				Classement des joueurs
+				{{ 'menu.classement'|trans }}
 			</a>
 		</td>
 	</tr>
 	<tr>
 		<td id="inviteAmis">
 			<a onClick="javascript:chargement(inviteAmis);" href="{{ path('asudre_invite_amis') }}">
-				Invitez vos amis
+				{{ 'menu.inviter'|trans }}
 			</a>
 		</td>
 	</tr>
 	<tr>
 		<td id="regles">
 			<a onClick="javascript:chargement(regles);" href="{{ path('asudre_regles_jeu') }}">
-				R&egrave;gles du jeu
+				{{ 'menu.regles'|trans }}
 			</a>
 		</td>
 	</tr>

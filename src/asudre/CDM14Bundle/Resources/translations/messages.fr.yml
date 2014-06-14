@@ -1,0 +1,91 @@
+security:
+    login.username: Nom
+    password: Mot de passe
+    remember_me: Se souvenir de moi
+entete:
+    cagnotte: Cagnotte
+    bienvenue: Bienvenue
+    deconnexion: Déconnexion
+    chargement: Chargement
+invite_tes_amis:
+    titre.creerGroupe: Créer un groupe
+    titre.inviterAmis: Inviter tes amis
+    titre.ajouterJoueurGroupe: Ajouter un joueur à un groupe
+    soustitre.creerGroupe: Un groupe permettra de visionner les membres dans un classement ne contenant que ses joueurs.
+    soustitre.inviterAmis: Plus on est de fous, plus on rit, et plus il y a d'argent en jeu.
+    soustitre.ajouterJoueurGroupe: Si un joueur est déjà inscrit, vous pouvez quand même l'ajouter à l'un de vos groupes à partir de son pseudo.
+    explication.inviterAmis: Pour inviter, choisissez un groupe, et remplissez le champ 'Courriels' avec les adresses de vos amis séparées par des virgules.
+entete-mises:
+    valider: Valider
+    matchs.numero: N°
+    matchs.match: Match / Cotes / Scores
+    matchs.groupe: Groupe
+    matchs.date: Date
+    matchs.mise: Mise
+    matchs.equipe: Equipe
+    matchs.score: Score
+erreur:
+    match.commence: Vous ne pouvez plus miser pour ce match.
+    match.non.commence: Ce match n'a pas encore débuté.
+    match.commence.annule: Vous ne pouvez plus annuler ce match.
+    elimine.joker: Vous êtes éliminés, vous n'avez plus de joker.
+    match.annulation: Il n'y a pas de mise pour ce match.
+    match.commence.mise: Il est trop tard pour miser pour ce match.
+    mise.cagnotte: Votre cagnotte est trop faible pour miser cette somme.
+    match.concordance: Cette équipe ne joue pas pour ce match.
+    match.commence: Ce match a déjà débuté.
+    mise.nonAutorisee: Cette mise n'est pas autorisée pour ce match.
+    joueur.estElimine: Vous êtes éliminé de la compétition. Vous ne pouvez plus miser.
+    cagnotte.trop.faible: Vous n'avez pas assez de jetons pour effectuer cette mise.
+    valeurs.form: Les valeurs fournies sont incorrectes.
+    pseudonyme.invalide: Cet utilisateur n'existe pas.
+    deja.dans.groupe: Cet utilisateur appartient déjà à ce groupe.
+msg.info:
+    mise: Mise sur %equipe% pour une valeur de %valeur%.
+    score: Score validé.
+    groupe: Groupe ajouté.
+    invitation: %nbInvitations% invitations envoyées.
+    ajoutJoueur: %pseudonyme% ajouté au groupe %groupe%.
+    joueursGroupe: Liste des joueurs du groupe %groupe%.
+joueurs:
+    numero: N°
+    groupe: Groupe
+    nom: Joueur
+    cagnotte: Cagnotte
+    dernierGain: Dernier gain
+    email: Courriels
+    dateInscription: Date inscription
+    dateInvitation: Date invitation
+    pseudonyme: Pseudonyme
+    groupe: Groupe
+groupes:
+    nom: Nom du groupe
+    erreur.acces.base: Erreur de sauvegarde en base.
+    date: Date de création
+    creer: Créer
+    inviter: Inviter
+    ajouterJoueur: Ajouter
+    code: Code d'invitation
+    utilisé: Groupe déjà utilisé.
+    nom.invalide: Nom du groupe non valide.
+inscription:
+    invitation.non.valide: Le code d'invitation n'est pas valide.
+    invitation.utilisee: Cette invitation est déjà utilisée.
+    motsDePasse.non.identiques: Les mots de passe ne sont pas identiques.
+    motDePasse.trop.court: Le mot de passe est trop court. Il doit contenir au moins 8 caractères.
+    nomUtilisateur.non.valide: Ce nom d'utilisateur n'est pas valide.
+    nomUtilisateur.utilise: Ce nom d'utilisateur est déjà utilisé.
+    courriel.utilise: Ce courriel est déjà utilisé.
+menu:
+    matchs: Matchs
+    classement: Classement des joueurs
+    inviter: Inviter vos amis
+    regles: Règles du jeu
+classement:
+    liste.tous: Tous
+    valider: Valider
+regles:
+    objectifs: <h2>Objectif</h2>Obtenir <strong>la cagnotte la plus élevée</strong> possible à la fin de la coupe du Monde se terminant le 13 Juillet 2014. <strong>63 matchs</strong> vont être misés (la petite finale ne fera pas parti du concours).
+    comment_miser: <h2>Comment miser ?</h2>Pour miser il faut se rendre sur la page <a onClick="javascript:chargement(matchs);" href="{{ path('asudre_matchs') }}">Matchs</a>. Les <strong>mises sont libres et n'ont pas de limite</strong> sauf le restant de votre cagnotte. Vous avez <strong>initialement 10 000 jetons</strong> pour miser, il n'y a pas de possibilité de se recaver. Les mises d'un match sont visibles en cliquant sur le bouton à gauche de la ligne de ce match.<br/>ex :<div class="button white boutonValider">1 </div> <br/><br/>Il est possible de miser jusqu'à l'heure coup d'envoi du match.<br/><br/><strong>Attention</strong>, vous ne pouvez <strong>pas annuler une mise !!</strong> En revanche, <strong>il est possible de miser autant de fois que souhaité</strong> pour un match donné (tant que votre cagnotte vous le permet).<br/><br/>Si vous <strong>ne misez pas pour un match</strong>, vous n'avez <strong>pas de pénalité</strong>.
+    calcul_cotes: <h2>Calcul des cotes</h2>Les valeurs des cotes est mis à jour chaque fois qu'un joueur mise. Les cotes évoluent donc jusqu'à la fermeture des mises à l'heure du coup d'envoi du match. Le calcul des gains se fait à partir des cotes obtenues à la clôture des mises, jusque là elles ne sont qu'un indicateur de l'évolution des mises des joueurs. Les cotes sont communes à tous les joueurs, quelque soit le groupe. Pour calculer son gain (lorsque le résultat est juste), il suffit de multiplier sa mise avec la cote de l'équipe vainqueur.
+    groupes_joueurs: <h2>Groupes de joueurs</h2>Vous avez la possibilité d'inviter des joueurs. Pour cela, il faut au préalable créer un groupe, qui permettra de sélectionner les invités dans un classement personnalisé.

@@ -363,8 +363,7 @@ function menuAffiche(vue) {
 function chargement(menu) {
 	
 	// Affichage du bandeau chargement
-	$("#msg p").text("Chargement...");
-	$("#msg").fadeIn();
+	$("#msgChargement").fadeIn();
 
 	menuAffiche(menu);
 
@@ -374,7 +373,7 @@ function chargement(menu) {
  * Suppression de l'information de chargement
  */
 function finChargement() {
-	$("#msg").fadeOut();
+	$("#msgChargement").fadeOut();
 }
 
 function afficheInfosMatch(idMatch){

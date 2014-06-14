@@ -29,3 +29,8 @@ services:
     asudre_serviceMails:
         class: %asudre_serviceMails%
         arguments: [@mailer, @templating]
+    asudre_locale.locale_listener:
+        class: asudre\CDM14Bundle\EventListener\LocaleListener
+        arguments: ["%kernel.default_locale%"]
+        tags:
+            - { name: kernel.event_subscriber }

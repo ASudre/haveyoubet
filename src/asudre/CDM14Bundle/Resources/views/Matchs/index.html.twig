@@ -8,12 +8,12 @@
 			<thead>
 
 				<tr id="groupe">
-					<th id="points">{{ 'matchs.numero'|trans }}</th>
-					<th>{{ 'matchs.match'|trans }}</th>
-					<th>{{ 'matchs.groupe'|trans }}</th>
-					<th>{{ 'matchs.date'|trans }}</th>
-					<th>{{ 'matchs.equipe'|trans }}</th>
-					<th>{{ 'matchs.mise'|trans }}</th>
+					<th id="points">{{ 'entete-mises.matchs.numero'|trans }}</th>
+					<th>{{ 'entete-mises.matchs.match'|trans }}</th>
+					<th>{{ 'entete-mises.matchs.groupe'|trans }}</th>
+					<th>{{ 'entete-mises.matchs.date'|trans }}</th>
+					<th>{{ 'entete-mises.matchs.equipe'|trans }}</th>
+					<th>{{ 'entete-mises.matchs.mise'|trans }}</th>
 					<th></th>
 				</tr>
 			</thead>
@@ -72,7 +72,7 @@
 									{% if m.estMatchJoue %} class="button boutonValider"
 									{% else %} onClick="mise({{ m.id }});" class="button white boutonValider"
 									{% endif %}>
-									{{ 'valider'|trans }}
+									{{ 'entete-mises.valider'|trans }}
 								</div>
 {# 								<div title="Annuler mise" #}
 {# 									{% if m.estMatchJoue %} class="buttonAnnuler"#}
@@ -87,9 +87,9 @@
 						<td colspan="7" style="padding: 2%;">
 							<table id="tabMises">
 								<tr class="titreMises{{ m.id }}">
-									<th>{{ 'matchs.equipe'|trans }}</th>
-									<th>{{ 'matchs.mise'|trans }}</th>
-									<th>{{ 'matchs.date'|trans }}</th>
+									<th>{{ 'entete-mises.matchs.equipe'|trans }}</th>
+									<th>{{ 'entete-mises.matchs.mise'|trans }}</th>
+									<th>{{ 'entete-mises.matchs.date'|trans }}</th>
 								</tr>
 						{% if mises[m.id] is defined %}
 						{% for mi in mises[m.id] %}

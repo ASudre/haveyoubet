@@ -22,6 +22,8 @@ class AccueilController extends Controller
     	// Récupération de la requête
     	$request = $this->getRequest();
     	
+    	$request->getSession()->set('_locale', 'fr');
+    	
    		$request->getSession()->set("sommeMises", $sommeMises);
     	
 		return $this->redirect( $this->generateUrl('asudre_matchs') );

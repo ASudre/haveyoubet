@@ -250,6 +250,22 @@ div#msg p{
 	top: 1px;	
 }
 
+div#msgChargement {
+	text-align: center;
+	border-radius: 3px 3px;
+	background-color: yellow;
+	position: absolute;
+	left: 50%;
+	top: 0px;
+	z-index: 2;
+}
+
+div#msgChargement p{
+	margin: 4px;
+	position: relative;
+	top: 1px;	
+}
+
 
 /* fin Page authentification */
 

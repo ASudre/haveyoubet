@@ -17,7 +17,7 @@
 			</select>
 			<select name="selectGroupe">
 					<option value="0">
-						<i>Tous</i>
+						<i>{{ 'classement.liste.tous'|trans }}</i>
 					</option>
 				{% for g in groupes %}
 					<option value="{{ g.id }}" {% if idGroupeAffiche == g.id %} selected {% endif %}>
@@ -27,7 +27,7 @@
 			</select>
 			<span id="bouton">
 				<div onClick="javascript:soumetClassementJoueurs()" class="button white boutonValider" >
-					{{ 'valider'|trans }}
+					{{ 'classement.valider'|trans }}
 				</div>
 			</span>
 		</form>

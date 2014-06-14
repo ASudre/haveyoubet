@@ -77,36 +77,36 @@ class UtilisateurController extends Controller
 		
 		if($invitation == null) {
 			// Invitation non valide
-			$msg = $this->get('translator')->trans('invitation.non.valide');
+			$msg = $this->get('translator')->trans('inscription.invitation.non.valide');
 		}
 		elseif($invitation->getInvite() != null) {
 			// invitation déjà utilisée
-			$msg = $this->get('translator')->trans('invitation.utilisee');
+			$msg = $this->get('translator')->trans('inscription.invitation.utilisee');
 		}
 		elseif($this->premierChargement == false) {
 			
 			if($invitation->getGroupe() == null) {
-				$msg = $this->get('translator')->trans('invitation.non.valide');
+				$msg = $this->get('translator')->trans('inscription.invitation.non.valide');
 			}
 			elseif(strlen($motDePasse) < 8) {
 				// Mot de passe trop court
-				$msg = $this->get('translator')->trans('motDePasse.trop.court');
+				$msg = $this->get('translator')->trans('inscription.motDePasse.trop.court');
 			}
 			elseif($motDePasse != $motDePasse2) {
 				// Mots de passe différents
-				$msg = $this->get('translator')->trans('motsDePasse.non.identiques');
+				$msg = $this->get('translator')->trans('inscription.motsDePasse.non.identiques');
 			}
 			elseif($username == "") {
 				// nom d'utilisateur non valide
-				$msg = $this->get('translator')->trans('nomUtilisateur.non.valide');
+				$msg = $this->get('translator')->trans('inscription.nomUtilisateur.non.valide');
 			}
 			elseif ($this->serviceUtilisateurs->estUsernameUtilise($username)) {
 				// nom d'utilisateur déjà utilisé
-				$msg = $this->get('translator')->trans('nomUtilisateur.utilise');
+				$msg = $this->get('translator')->trans('inscription.nomUtilisateur.utilise');
 			}
 			elseif ($this->serviceUtilisateurs->estCourrielUtilise($email)) {
 				// courriel déjà utilisé
-				$msg = $this->get('translator')->trans('courriel.utilise');
+				$msg = $this->get('translator')->trans('inscription.courriel.utilise');
 			}
 			
 		}

@@ -1,22 +1,24 @@
 <div id="menuBar">
-	<div style="color:white">
- 	   	Bienvenue {{ app.user.username }}
+	<div style="color: white">{{ 'entete.bienvenue'|trans }} {{ app.user.username }}</div>
+	<div style="color: white">
+		{{ 'entete.cagnotte'|trans }} : 
+		<span id="cagnotte">
+			{% set cagnotteCourante = app.user.cagnotte - app.session.get('sommeMises') %} 
+			{% if cagnotteCourante <= 0 and app.session.get('sommeMises') == 0 %} Eliminé 
+			{% else %} {{ cagnotteCourante|round(2) }} {% endif %} 
+		</span>
 	</div>
-	<div style="color:white">
- 	   	Cagnotte : 
- 	   	<span id="cagnotte" >
- 	   		{% set cagnotteCourante = app.user.cagnotte - app.session.get('sommeMises') %}
-	 	   	{% if cagnotteCourante <= 0 and app.session.get('sommeMises') == 0 %}
-	 	   		Eliminé
-	 	   	{% else %}
-	 	   		{{ cagnotteCourante|round(2) }}
-	 	   	{% endif %}
- 	   	</span>
+	<div style="color: white">
+		<a href="{{ path('asudre_changer_langue') }}?redirect={{ app.request.attributes.get('_route') }}">{{ app.session.get('_locale') }}</a>
 	</div>
 	<div id="menuDroite">
-		<a href="{{ path('fos_user_security_logout') }}">D&eacute;connexion</a>
+		<a href="{{ path('fos_user_security_logout') }}">{{	'entete.deconnexion'|trans }}</a>
 	</div>
 </div>
-<div id="msg">
-	<p>Chargement...</p>
+<div id="msgChargement">
+	<p>{{ 'entete.chargement'|trans }}...</p>
+</div>
+
+<div id="msg" style="display: none;">
+	<p></p>
 </div>
