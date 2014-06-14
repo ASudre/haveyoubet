@@ -18,7 +18,7 @@ class UtilisateurRepository extends EntityRepository
 	 * @param unknown $idMatch Match dont on affiche le classement
 	 */
 	function getUtilisateursOrdCagnotteParGroupe($idMatch, $idGroupe) {
-		$query = $this->_em->createQuery('SELECT ut.username, h1.gain, 1000 + COALESCE(sum(h.gain), 0) AS cagnotte
+		$query = $this->_em->createQuery('SELECT ut.username, h1.gain, 10000 + COALESCE(sum(h.gain), 0) AS cagnotte
 				FROM asudreUtilisateursBundle:Utilisateur ut
 				LEFT JOIN asudreCDM14Bundle:Historique h 
 				WITH ut.id = h.utilisateur AND h.match <= :match
@@ -40,7 +40,7 @@ class UtilisateurRepository extends EntityRepository
 	 * @param unknown $idMatch Match dont on affiche le classement
 	 */
 	function getUtilisateursOrdCagnotte($idMatch) {
-		$query = $this->_em->createQuery('SELECT ut.username, h1.gain, 1000 + COALESCE(sum(h.gain), 0) AS cagnotte
+		$query = $this->_em->createQuery('SELECT ut.username, h1.gain, 10000 + COALESCE(sum(h.gain), 0) AS cagnotte
 				FROM asudreUtilisateursBundle:Utilisateur ut
 				LEFT JOIN asudreCDM14Bundle:Historique h
 				WITH ut.id = h.utilisateur AND h.match <= :match
