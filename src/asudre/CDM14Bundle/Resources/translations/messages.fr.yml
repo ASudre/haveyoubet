@@ -81,6 +81,9 @@ menu:
     classement: Classement des joueurs
     inviter: Inviter vos amis
     regles: Règles du jeu
+    console: Console
+    scores: Scores
+    creation: Gestion de la compétition
 classement:
     liste.tous: Tous
     valider: Valider

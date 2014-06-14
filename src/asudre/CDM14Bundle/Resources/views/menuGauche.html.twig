@@ -1,13 +1,11 @@
 <div id="menuGauche">
 
-{# <img src="http://upload.wikimedia.org/wikipedia/en/thumb/e/e8/WC-2014-Brasil.svg/719px-WC-2014-Brasil.svg.png">#}
-
 <table id="menu">
 	{% if is_granted("ROLE_SUPER_ADMIN") %}
 	<tr>
 		<td id="competition">
 			<a onClick="javascript:chargement(competition);" href="{{ path('asudre_creation_cdm_accueil') }}" >
-				{{ 'menu.numero'|trans }}
+				{{ 'menu.creation'|trans }}
 			</a>
 		</td>
 	</tr>
@@ -16,7 +14,7 @@
 	<tr>
 		<td id="scores">
 			<a onClick="javascript:chargement(scores);" href="{{ path('asudre_scores') }}">
-				{{ 'menu.numero'|trans }}
+				{{ 'menu.scores'|trans }}
 			</a>
 		</td>
 	</tr>
@@ -53,7 +51,7 @@
 	<tr>
 		<td id="console">
 			<a onClick="javascript:chargement(console);" href="{{ path('console') }}">
-				Console
+				{{ 'menu.console'|trans }}
 			</a>
 		</td>
 	</tr>
