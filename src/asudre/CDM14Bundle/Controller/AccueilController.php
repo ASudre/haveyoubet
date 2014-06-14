@@ -22,7 +22,17 @@ class AccueilController extends Controller
     	// Récupération de la requête
     	$request = $this->getRequest();
     	
-    	$request->getSession()->set('_locale', 'fr');
+    	if($usr->getLangue() == "" || $usr->getLangue() == "fr") {
+    		$langue = 'fr';
+    	}
+    	elseif($usr->getLangue() == "en") {
+    		$langue = 'en';
+    	}
+    	else {
+    		$langue = 'fr';
+    	}
+    	
+    	$request->getSession()->set('_locale', $usr->getLangue());
     	
    		$request->getSession()->set("sommeMises", $sommeMises);
     	

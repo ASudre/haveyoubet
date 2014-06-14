@@ -2,6 +2,11 @@ security.login:
     username: Username
     password: Password
     remember_me: Remember me
+inscription:
+    login: Username
+    motDePasse: Password
+    motDePasse.confirmation: Confirm password
+    courriel: Email
 entete:
     cagnotte: Pot
     bienvenue: Welcome
@@ -15,8 +20,8 @@ invite_tes_amis:
     soustitre.inviterAmis: The more, the merrier, and the more money in the game.
     soustitre.ajouterJoueurGroupe: If a player is already in the game, you can add in one of your groups with his username.
     explication.inviterAmis: To invite, choose a group and fill the field 'Mails' with addresses separated by a comma.
-entete-mises:
-    valider: Validate
+mises:
+    valider: Bet
     matchs.numero: N°
     matchs.match: Match / Odds / Score
     matchs.groupe: Group
@@ -58,6 +63,7 @@ joueurs:
     dateInvitation: Invitation date
     pseudonyme: Username
     groupe: Group
+    langue: Language
 groupes:
     nom: Group name
     erreur.acces.base: Failure to save in base.

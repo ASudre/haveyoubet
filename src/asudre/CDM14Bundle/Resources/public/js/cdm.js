@@ -232,6 +232,7 @@ function inviter() {
 	
 	var courriels = $('#courriels').val();
 	var idGroupe = $('select#groupe').val();
+	var langue = $('#langue').val();
 	
 	if(courriels.length <= 0 && idGroupe != parseInt(idGroupe)) {
 		displayMsg("Veuillez entrer remplir correctement les deux champs.");
@@ -241,6 +242,7 @@ function inviter() {
 	
 	var param = "courriels=" + courriels;
 	param += "&idGroupe=" + idGroupe;
+	param += "&langue=" + langue;
 	
 	$.ajax({
 		type: "POST",
@@ -259,6 +261,7 @@ function inviter() {
 			else {
 				displayMsg($(xml).find('messageInfo').text());
 				
+				var langue = $(xml).find('langue').text();
 				var date = $(xml).find('date').text();
 				var courriels = $(xml).find('courriel');
 				var nomGroupe = $(xml).find('nomGroupe').text();
@@ -272,6 +275,7 @@ function inviter() {
 							"	<td></td>" +
 							"	<td>" + date + "</td>" +
 							"	<td></td>" +
+							"	<td>" + langue + "</td>" +
 							"	<td></td>" +
 					"</tr>");
 				}

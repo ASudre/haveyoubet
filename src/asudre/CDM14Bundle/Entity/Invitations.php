@@ -58,6 +58,13 @@ class Invitations
      * @ORM\JoinColumn(name="groupe_id", referencedColumnName="id")
      */
     private $groupe;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="langue", type="string", length=4)
+     */
+    private $langue;
     
     /**
      * @var \DateTime
@@ -235,5 +242,28 @@ class Invitations
     public function getInvite()
     {
         return $this->invite;
+    }
+
+    /**
+     * Set langue
+     *
+     * @param string $langue
+     * @return Invitations
+     */
+    public function setLangue($langue)
+    {
+        $this->langue = $langue;
+    
+        return $this;
+    }
+
+    /**
+     * Get langue
+     *
+     * @return string 
+     */
+    public function getLangue()
+    {
+        return $this->langue;
     }
 }

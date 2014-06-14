@@ -60,6 +60,7 @@
 					<th>{{ 'joueurs.pseudonyme'|trans }}</th>
 					<th>{{ 'joueurs.dateInvitation'|trans }}</th>
 					<th>{{ 'joueurs.dateInscription'|trans }}</th>
+					<th>{{ 'joueurs.langue'|trans }}</th>
 					<th></th>
 				</tr>
 			</thead>
@@ -78,6 +79,12 @@
 						<td></td>
 						<td></td>
 						<td></td>
+						<td>
+							<select id="langue">
+								<option value="fr">fr</option>
+								<option value="en">en</option>
+							</select>
+						</td>
 						<td>
 							<span id="boutonInvitation">
 								<div onClick="inviter();" class="button white boutonValider">
@@ -102,6 +109,7 @@
 									{{ i.invite.dateInscription|date('d/m/Y H:i') }}
 								{% endif %}
 							</td>
+							<td>{{ i.langue }}</td>
 							<td></td>
 						</tr>
 				{% endfor %}

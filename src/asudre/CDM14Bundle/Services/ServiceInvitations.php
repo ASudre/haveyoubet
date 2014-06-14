@@ -26,9 +26,10 @@ class ServiceInvitations
 	 * Crée une nouvelle invitation
 	 * @param unknown $nomGroupe
 	 * @param String $courriels
+	 * @param unknown $langue
 	 * @param unknown $utilisateur
 	 */
-	public function creationInvitations($groupe, $courriels, $utilisateur) {
+	public function creationInvitations($groupe, $courriels, $langue, $utilisateur) {
 
 		$arrayCourriels = null;
 		$codes = array();
@@ -54,7 +55,7 @@ class ServiceInvitations
 						// Vérification de l'unicité du code
 						while($this->invitationsRepo->estCodeUnique($code)[0][1] != 0);
 				
-						$this->invitationsRepo->creationInvitation($groupe, $courriel, $utilisateur, $code);
+						$this->invitationsRepo->creationInvitation($groupe, $courriel, $langue, $utilisateur, $code);
 						
 						$codes[$courriel] = $code;
 					}

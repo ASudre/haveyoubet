@@ -109,13 +109,15 @@ class ServiceUtilisateurs
 	 * @param unknown $codeInvitation
 	 * @param unknown $motDePasse
 	 * @param unknown $groupeUtilisateur
+	 * @param unknown $langue
 	 */
-	public function creationUtilisateur($username, $email, $codeInvitation, $motDePasse, $groupeUtilisateur) {
+	public function creationUtilisateur($username, $email, $codeInvitation, $motDePasse, $groupeUtilisateur, $langue) {
 		$utilisateur = $this->userManager->createUser();
 		$utilisateur->setUsername($username);
 		$utilisateur->setEmail($email);
 		$utilisateur->setEnabled(true);
 		$utilisateur->setPlainPassword($motDePasse);
+		$utilisateur->setLangue($langue);
 		$utilisateur->addGroupesJoueur($groupeUtilisateur);
 		
 		$this->userManager->updateUser($utilisateur);

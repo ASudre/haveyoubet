@@ -2,6 +2,11 @@ security:
     login.username: Nom
     password: Mot de passe
     remember_me: Se souvenir de moi
+inscription:
+    login: Nom
+    motDePasse: Mot de passe
+    motDePasse.confirmation: Confirmation mot de passe
+    courriel: courriel
 entete:
     cagnotte: Cagnotte
     bienvenue: Bienvenue
@@ -15,7 +20,7 @@ invite_tes_amis:
     soustitre.inviterAmis: Plus on est de fous, plus on rit, et plus il y a d'argent en jeu.
     soustitre.ajouterJoueurGroupe: Si un joueur est déjà inscrit, vous pouvez quand même l'ajouter à l'un de vos groupes à partir de son pseudo.
     explication.inviterAmis: Pour inviter, choisissez un groupe, et remplissez le champ 'Courriels' avec les adresses de vos amis séparées par des virgules.
-entete-mises:
+mises:
     valider: Valider
     matchs.numero: N°
     matchs.match: Match / Cotes / Scores
@@ -58,6 +63,7 @@ joueurs:
     dateInvitation: Date invitation
     pseudonyme: Pseudonyme
     groupe: Groupe
+    langue: Langue
 groupes:
     nom: Nom du groupe
     erreur.acces.base: Erreur de sauvegarde en base.

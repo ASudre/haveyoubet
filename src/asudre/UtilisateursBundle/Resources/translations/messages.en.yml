@@ -1,0 +1,11 @@
+security.login:
+    username: Username
+    password: Password
+    remember_me: Remember me
+inscription:
+    login: Username
+    motDePasse: Password
+    motDePasse.confirmation: Confirm password
+    courriel: Email
+    retour_auth: Already signed up ?
+    valider: Sign up

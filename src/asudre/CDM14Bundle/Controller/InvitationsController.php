@@ -102,8 +102,9 @@ class InvitationsController extends Controller
 		$request = $this->getRequest();
 		$idGroupe = $request->request->get("idGroupe");
 		$courriels = $request->request->get("courriels");
+		$langue = $request->request->get("langue");
 
-		$retourXMLInvitation = $this->gestionInvitation($idGroupe, $courriels);
+		$retourXMLInvitation = $this->gestionInvitation($idGroupe, $courriels, $langue);
 		
 		return new Response($retourXMLInvitation);
 	}
@@ -112,9 +113,15 @@ class InvitationsController extends Controller
 	 * Vérifie la validité des données et modifie la base
 	 * @param unknown $idGroupe
 	 * @param unknown $courriels
+	 * @param unknown $langue
 	 */
-	private function gestionInvitation($idGroupe, $courriels) {
+	private function gestionInvitation($idGroupe, $courriels, $langue) {
 		$groupe = null;
+		
+		// français par défaut
+		if($langue !== 'en' && $langue !== 'fr') {
+			$langue = 'fr';
+		}
 
 		// Récupération de l'utilisateur connecté
 		$user = $this->get('security.context')->getToken()->getUser();
@@ -126,7 +133,7 @@ class InvitationsController extends Controller
 			
 				$groupe = $this->serviceGroupes->getGroupe($idGroupe);
 				try {
-					$codesInvitations = $this->ajoutInvitations($groupe, $courriels, $user);
+					$codesInvitations = $this->ajoutInvitations($groupe, $courriels, $langue, $user);
 					$retour = Invitations::OK;
 				}
 				catch (Exception $e) {
@@ -144,10 +151,10 @@ class InvitationsController extends Controller
 		if($retour == Invitations::OK && $codesInvitations != null) {
 			$url = $this->generateUrl('asudre_lienMailInscription', array(), true);
 			// envoi du mail d'invitations
-			$this->serviceMails->envoiMailsInvitations($codesInvitations, $url, $user->getUsername());
+			$this->serviceMails->envoiMailsInvitations($langue, $codesInvitations, $url, $user->getUsername());
 		}
 	
- 		return $this->retourXMLInvitation($groupe, $codesInvitations, $retour);
+ 		return $this->retourXMLInvitation($groupe, $langue, $codesInvitations, $retour);
 	
 	}
 	
@@ -157,17 +164,18 @@ class InvitationsController extends Controller
 	 * @param unknown $courriels
 	 * @param unknown $utilisateur
 	 */
-	private function ajoutInvitations($groupe, $courriels, $utilisateur) {
-		return $this->serviceInvitations->creationInvitations($groupe, $courriels, $utilisateur);
+	private function ajoutInvitations($groupe, $courriels, $langue, $utilisateur) {
+		return $this->serviceInvitations->creationInvitations($groupe, $courriels, $langue, $utilisateur);
 	}
 	
 	/**
 	 * Structure les données retounées pour la mise à jour de l'affichage
 	 * @param unknown $groupe
+	 * @param unknown $langue
 	 * @param unknown $codesInvitations
 	 * @param unknown $retour
 	 */
-	private function retourXMLInvitation($groupe, $codesInvitations, $retour) {
+	private function retourXMLInvitation($groupe, $langue, $codesInvitations, $retour) {
 		$xml = "";
 	
 		if($retour == Invitations::OK) {
@@ -190,6 +198,7 @@ class InvitationsController extends Controller
 				"<date>" .date("d/m/Y H:i"). "</date>" .
 				"<courriels>" .$courriels. "</courriels>" .
 				"<nomGroupe>" .$nomGroupe. "</nomGroupe>" .
+				"<langue>" .$langue. "</langue>" .
 				"<message>" . "</message>" .
 				"<messageInfo>" .$msgInfo. "</messageInfo>" .
 			"</invitation>";

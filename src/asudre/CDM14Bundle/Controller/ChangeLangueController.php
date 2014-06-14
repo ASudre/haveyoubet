@@ -11,7 +11,9 @@ class ChangeLangueController extends Controller
 	 */
     public function indexAction()
     {
-    	if('fr' == $this->get('session')->get('_locale')) {
+    	$request = $this->getRequest();
+    	
+    	if('fr' == $request->getLocale()) {
 			$this->get('session')->set('_locale', 'en');
     	}
     	else {

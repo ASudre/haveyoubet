@@ -21,18 +21,27 @@ class ServiceMails
 
 	/**
 	 * Envoi le mail d'inscription au site
+	 * @param unknown $langue
 	 * @param unknown $codesInvitations
 	 * @param unknown $url
 	 * @param unknown $invite Pseudo de l'utilisateur qui invite
 	 */
-	public function envoiMailsInvitations($codesInvitations, $url, $invite) {
+	public function envoiMailsInvitations($langue, $codesInvitations, $url, $invite) {
 		$objet = "Inscription";
 		
 		foreach ($codesInvitations as $courriel => $code) {
+			
+			if($langue == 'en') {
+				$fichierContenu = 'asudreCDM14Bundle:Mails:invitations_en.html.twig';
+			}
+			else {
+				$fichierContenu = 'asudreCDM14Bundle:Mails:invitations_fr.html.twig';
+			}
+			
 			$corps = $this->templateService->render(
-				'asudreCDM14Bundle:Mails:invitations.html.twig',
+				$fichierContenu,
 				array(
-					'lien' => $url . "?codeInscription=" . $code,
+					'lien' => $url . "?lang=".$langue."&codeInscription=" . $code,
 					'invite' => $invite
 				)
 			);

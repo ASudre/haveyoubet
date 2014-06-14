@@ -25,10 +25,13 @@ class InvitationsRepository extends EntityRepository
 	
 	/**
 	 * Création d'une invitations
-	 * @param unknown $nomGroupe
+	 * @param unknown $groupe
+	 * @param unknown $courriel
+	 * @param unknown $langue
 	 * @param unknown $utilisateur
+	 * @param unknown $code
 	 */
-	public function creationInvitation($groupe, $courriel, $utilisateur, $code) {
+	public function creationInvitation($groupe, $courriel, $langue, $utilisateur, $code) {
 		try {
 			$invitation = new Invitations();
 			$invitation->setCodeInscription($code);
@@ -36,6 +39,7 @@ class InvitationsRepository extends EntityRepository
 			$invitation->setGroupe($groupe);
 			$invitation->setHote($utilisateur);
 			$invitation->setDate(new \DateTime("now"));
+			$invitation->setLangue($langue);
 		
 			$this->_em->persist($invitation);
 		

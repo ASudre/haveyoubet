@@ -43,6 +43,13 @@ class Utilisateur extends BaseUser
     private $groupesJoueurs;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="langue", type="string", length=4)
+     */
+    private $langue;
+
+    /**
      * Constructor
      */
     public function __construct() {
@@ -141,5 +148,28 @@ class Utilisateur extends BaseUser
     public function getGroupesJoueurs()
     {
         return $this->groupesJoueurs;
+    }
+
+    /**
+     * Set langue
+     *
+     * @param string $langue
+     * @return Utilisateur
+     */
+    public function setLangue($langue)
+    {
+        $this->langue = $langue;
+    
+        return $this;
+    }
+
+    /**
+     * Get langue
+     *
+     * @return string 
+     */
+    public function getLangue()
+    {
+        return $this->langue;
     }
 }

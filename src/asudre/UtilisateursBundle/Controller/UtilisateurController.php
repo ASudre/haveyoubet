@@ -19,6 +19,11 @@ class UtilisateurController extends Controller
     	$request = $this->getRequest();
     	$codeInscription = $request->query->get('codeInscription');
     	
+    	$langue = $request->query->get('lang');
+    	$request->setLocale($langue);
+    	$this->get('session')->set('_locale', $langue);
+    	
+    	
     	$this->serviceInvitations = $this->container->get('asudre_serviceInvitations'); 
     	$invitation = $this->serviceInvitations->getInvitation($codeInscription);
 
@@ -62,7 +67,7 @@ class UtilisateurController extends Controller
 		$msg = $this->verificationChamps($username, $email, $invitation, $motDePasse, $motDePasse2);
 
 		if($msg === null) {
-			$utilisateur = $this->serviceUtilisateurs->creationUtilisateur($username, $email, $codeInscription, $motDePasse, $invitation->getGroupe());
+			$utilisateur = $this->serviceUtilisateurs->creationUtilisateur($username, $email, $codeInscription, $motDePasse, $invitation->getGroupe(), $invitation->getLangue());
 			$this->serviceInvitations->miseAJourInvitation($invitation, $utilisateur);
 		}
 		else {
