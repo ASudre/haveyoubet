@@ -26,6 +26,10 @@ asudre_classement_joueurs:
     pattern: /ClassementJoueurs
     defaults: { _controller: asudreCDM14Bundle:ClassementJoueurs:index }
     
+asudre_graphique_joueurs:
+    pattern: /GraphiqueJoueurs
+    defaults: { _controller: asudreCDM14Bundle:ClassementJoueurs:graphique }
+    
 asudre_invite_amis:
     pattern: /Invitations
     defaults: { _controller: asudreCDM14Bundle:Invitations:index }
