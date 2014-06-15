@@ -39,10 +39,10 @@ class ServiceUtilisateurs
 	
 	/**
 	 * Récupère les utilisateurs ordonnés par valeur de cagnotte pour le match passé en paramètre
-	 * @param unknown $idMatch
+	 * @param unknown $match
 	 */
-	public function recuperationUtilisateursOrdCagnotte($idMatch) {
-		return $this->utilisateursRepo->getUtilisateursOrdCagnotte($idMatch);
+	public function recuperationUtilisateursOrdCagnotte($match) {
+		return $this->utilisateursRepo->getUtilisateursOrdCagnotte($match);
 	}
 	
 	/**
