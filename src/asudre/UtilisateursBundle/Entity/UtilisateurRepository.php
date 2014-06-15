@@ -15,13 +15,15 @@ class UtilisateurRepository extends EntityRepository
 	
 	/**
 	 * Récupération des utilisateurs ordonnés par cagnotte
-	 * @param unknown $idMatch Match dont on affiche le classement
+	 * @param unknown $match Match dont on affiche le classement
+	 * @param unknown $idGroupe Groupe dont on affiche le classement
 	 */
-	function getUtilisateursOrdCagnotteParGroupe($idMatch, $idGroupe) {
+	function getUtilisateursOrdCagnotteParGroupe($match, $idGroupe) {
+		
 		$query = $this->_em->createQuery('SELECT ut.username, h1.gain, 10000 + COALESCE(sum(h.gain), 0) AS cagnotte
 				FROM asudreUtilisateursBundle:Utilisateur ut
 				LEFT JOIN asudreCDM14Bundle:Historique h 
-				WITH ut.id = h.utilisateur AND h.match <= :match
+				WITH ut.id = h.utilisateur AND h.match IN (select m.id from asudreCDM14Bundle:matchs m where m.date <= :dateMatch)
 				LEFT JOIN asudreCDM14Bundle:Historique h1 
 				WITH ut.id = h1.utilisateur AND h1.match = :match
 				JOIN ut.groupesJoueurs g
@@ -29,26 +31,29 @@ class UtilisateurRepository extends EntityRepository
 				GROUP BY ut.id
 				ORDER BY cagnotte desc');
 		$query->setParameters(array(
-				'match' => $idMatch,
+				'dateMatch' => $match->getDate(),
+				'match' => $match,
 				'idGroupe' => $idGroupe
 		));
+		
 		return $query->getResult();
 	}
 	
 	/**
 	 * Récupération des utilisateurs ordonnés par cagnotte
-	 * @param unknown $idMatch Match dont on affiche le classement
+	 * @param unknown $match Match dont on affiche le classement
 	 */
-	function getUtilisateursOrdCagnotte($idMatch) {
+	function getUtilisateursOrdCagnotte($match) {
 		$query = $this->_em->createQuery('SELECT ut.username, h1.gain, 10000 + COALESCE(sum(h.gain), 0) AS cagnotte
 				FROM asudreUtilisateursBundle:Utilisateur ut
 				LEFT JOIN asudreCDM14Bundle:Historique h
-				WITH ut.id = h.utilisateur AND h.match <= :match
+				WITH ut.id = h.utilisateur AND h.match IN (select m.id from asudreCDM14Bundle:matchs m where m.date <= :dateMatch)
 				LEFT JOIN asudreCDM14Bundle:Historique h1
 				WITH ut.id = h1.utilisateur AND h1.match = :match
 				group by ut.id
 				ORDER BY cagnotte desc');
 		$query->setParameters(array(
+				'dateMatch' => $match->getDate(),
 				'match' => $idMatch
 		));
 		return $query->getResult();

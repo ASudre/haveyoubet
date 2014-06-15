@@ -49,6 +49,7 @@ class ClassementJoueursController extends Controller
     	
     	foreach ($matchs as $index=>$match) {
     		
+    		// On enlève qui ne sont pas encore joué
     		if($match->getDate() > new \DateTime("now")) {
     			unset($matchs[$index]);
     		}
@@ -58,18 +59,15 @@ class ClassementJoueursController extends Controller
     			if($match->getScoreEq1() !== null && $match->getScoreEq2() !== null) {
     				$match->setEstMatchJoue(true);
     				
-    				// à la fin de la boucle, contiendra le dernier match dont le score a été validé
-	   				$dernierMatch = $match;
+	    			// à la fin de la boucle, contiendra le dernier match dont le score a été validé
+		   			$dernierMatch = $match;
     			}
 
     			// Si on n'est pas encore tombé sur le match à afficher
     			if($matchAffiche == null && $match->getId() == $idMatch) {
     				$matchAffiche = $match;
-    				// On peut sortir de la boucle si on a le match a afficher
-    				break;
     			}
     			
-
     		}
     	}
     	
@@ -78,10 +76,11 @@ class ClassementJoueursController extends Controller
     	}
     	
     	$utilisateurs = array();
-    	$idMatchAffiche = null;
     	$idGroupeAffiche = $idGroupe;
+    	$idMatchAffiche = null;
     	
     	if($matchAffiche != null) {
+    		
     		$idMatchAffiche = $matchAffiche->getId();
     		
     		if(!$matchAffiche->getEstMatchJoue()) {
@@ -97,16 +96,24 @@ class ClassementJoueursController extends Controller
 	    				return $this->render('asudreCDM14Bundle:ClassementJoueurs:index.html.twig', array('groupes' => $groupes, 'matchs' => $matchs, 'idMatchAffiche' => $idMatchAffiche, 'idGroupeAffiche' => $idGroupeAffiche, 'msgErreur' => 'Vous n\'appartenez pas à ce groupe.'));
 	    			}
 	    			
-		    		$utilisateurs = $serviceUtilisateurs->getUtilisateursOrdCagnotteParGroupe($idMatchAffiche, $idGroupeAffiche);
+		    		$utilisateurs = $serviceUtilisateurs->getUtilisateursOrdCagnotteParGroupe($matchAffiche, $idGroupeAffiche);
 	    		}
 	    		else {
 	    			$idGroupeAffiche = 0;
-	    			$utilisateurs = $serviceUtilisateurs->recuperationUtilisateursOrdCagnotte($idMatchAffiche);
+	    			$utilisateurs = $serviceUtilisateurs->recuperationUtilisateursOrdCagnotte($matchAffiche);
 	    		}
 	    	}
     	}
     	
-    	return $this->render('asudreCDM14Bundle:ClassementJoueurs:index.html.twig', array('groupes' => $groupes, 'matchs' => $matchs, 'utilisateurs' => $utilisateurs, 'idMatchAffiche' => $idMatchAffiche, 'idGroupeAffiche' => $idGroupeAffiche));
+    	return $this->render('asudreCDM14Bundle:ClassementJoueurs:tableau.html.twig', array('groupes' => $groupes, 'matchs' => $matchs, 'utilisateurs' => $utilisateurs, 'idMatchAffiche' => $idMatchAffiche, 'idGroupeAffiche' => $idGroupeAffiche, 'typeAffiche' => 'tableau'));
 	
     }
+    
+    /**
+     * Méthode d'affichage du graphique
+     */
+    public function graphiqueAction() {
+    	return $this->render('asudreCDM14Bundle:ClassementJoueurs:graphique.html.twig');
+	}
+
 }

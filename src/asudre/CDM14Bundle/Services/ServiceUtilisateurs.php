@@ -47,11 +47,11 @@ class ServiceUtilisateurs
 	
 	/**
 	 * Récupère les utilisateurs ordonnés par valeur de cagnotte pour le match passé en paramètre par groupe
-	 * @param unknown $idMatch
+	 * @param unknown $match
 	 * @param unknown $idGroupe
 	 */
-	public function getUtilisateursOrdCagnotteParGroupe($idMatch, $idGroupe) {
-		return $this->utilisateursRepo->getUtilisateursOrdCagnotteParGroupe($idMatch, $idGroupe);
+	public function getUtilisateursOrdCagnotteParGroupe($match, $idGroupe) {
+		return $this->utilisateursRepo->getUtilisateursOrdCagnotteParGroupe($match, $idGroupe);
 	}
 	
 	/**
