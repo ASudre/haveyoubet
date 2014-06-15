@@ -54,7 +54,7 @@ class UtilisateurRepository extends EntityRepository
 				ORDER BY cagnotte desc');
 		$query->setParameters(array(
 				'dateMatch' => $match->getDate(),
-				'match' => $idMatch
+				'match' => $match
 		));
 		return $query->getResult();
 	}
