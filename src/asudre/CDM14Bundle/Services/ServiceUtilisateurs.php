@@ -150,4 +150,8 @@ class ServiceUtilisateurs
 			return false;
 		}
 	}
+	
+	public function getUtilisateursGainsMatchsTous($match) {
+		
+	}
 }
