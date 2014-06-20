@@ -29,6 +29,7 @@ mises:
     matchs.mise: Bet
     matchs.equipe: Team
     matchs.score: Score
+    matchs.confirmation: Confirm you bet
 erreur:
     match.commence: You can't bet for this match anymore.
     match.non.commence: This match has not started yet.

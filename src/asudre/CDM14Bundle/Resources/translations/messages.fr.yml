@@ -29,6 +29,7 @@ mises:
     matchs.mise: Mise
     matchs.equipe: Equipe
     matchs.score: Score
+    matchs.confirmation: Confirmer votre pari
 erreur:
     match.commence: Vous ne pouvez plus miser pour ce match.
     match.non.commence: Ce match n'a pas encore débuté.

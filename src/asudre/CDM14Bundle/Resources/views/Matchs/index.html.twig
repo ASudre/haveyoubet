@@ -70,7 +70,7 @@
 							<span id="boutons{{ m.id }}">
 								<div
 									{% if m.estMatchJoue %} class="button boutonValider"
-									{% else %} onClick="mise({{ m.id }});" class="button white boutonValider"
+									{% else %} onClick="mise({{ m.id }}, '{{ 'mises.matchs.confirmation'|trans }}');" class="button white boutonValider"
 									{% endif %}>
 									{{ 'mises.valider'|trans }}
 								</div>

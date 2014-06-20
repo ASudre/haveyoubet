@@ -11,10 +11,15 @@ function verifChamps(scoreEquipe1, scoreEquipe2) {
 	return 0;
 }
 
-function mise(idMatch) {
+function mise(idMatch, msgConfirmation) {
 	
 	if($("select[name=select" + idMatch + "]").val() == "" || $("input[name=mise" + idMatch + "]").val() == "") {
 		displayMsg("Veuillez remplir les deux champs.");
+		return;
+	}
+	
+	if(!confirm(msgConfirmation)) {
+		displayMsg("Annulé.");
 		return;
 	}
 	
