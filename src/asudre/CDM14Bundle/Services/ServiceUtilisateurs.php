@@ -151,7 +151,11 @@ class ServiceUtilisateurs
 		}
 	}
 	
+	/**
+	 * Récupère les informations pour l'affichage du graphique de classement
+	 * @param unknown $match
+	 */
 	public function getUtilisateursGainsMatchsTous($match) {
-		
+		return $this->utilisateursRepo->getUtilisateursGainsMatchsTous($match);
 	}
 }

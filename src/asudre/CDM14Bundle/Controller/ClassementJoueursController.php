@@ -114,9 +114,62 @@ class ClassementJoueursController extends Controller
      */
     public function graphiqueAction() {
     	
+    	$serviceUtilisateurs = $this->container->get('asudre.serviceUtilisateurs');
+    	$serviceMatchs = $this->container->get('asudre.serviceMatchs');
     	
+    	$match = $serviceMatchs->getDernierMatchJoue();
     	
-    	return $this->render('asudreCDM14Bundle:ClassementJoueurs:graphique.html.twig');
+    	if($match != null) {
+    		$idMatchCourant = null;
+    		$cagnotteInitiale = 10000;
+    		// Les deux premières lignes sont le nom des joueurs et les cagnottes initiales
+    		$indexNumMatch = 1;
+    		$indexJoueur = 1;
+    		// contient les cagnottes pour chaque joueur
+    		$tableauCagnottes = array();
+    		
+    		// true losrqu'on initialise avec le nom des joueurs et la cagnotte initialie lors de la première itération
+    		$estInitialisation = true;
+    		
+    		$joueursCagnottes = $serviceUtilisateurs->getUtilisateursGainsMatchsTous($match);
+    		
+    		// Crée le tableau en associant les utilisateurs à leurs cagnottes ordonnées par match
+    		foreach ($joueursCagnottes as $index=>$gainJoueur) {
+    			
+    			if($idMatchCourant != $gainJoueur['idMatch']) {
+	    			if($idMatchCourant != null) {
+	    				$estInitialisation = false;
+	    			}
+	    			else {
+	    				$tableauCagnottes[0][0] = 'Match';
+	    				$tableauCagnottes[1][0] = 0;
+	    			}
+	    			
+	    			$idMatchCourant = $gainJoueur['idMatch'];
+	    			
+	    			$indexNumMatch++;
+    				$indexJoueur = 0;
+    				$tableauCagnottes[$indexNumMatch][$indexJoueur++] = $indexNumMatch - 1;
+
+    			}
+    			
+				// Il s'agit de remplir les deux premières lignes : le nom des joueurs et la cagnotte initiale
+				if($estInitialisation) {
+					// on sauve le nom des joueurs
+					$tableauCagnottes[0][$indexJoueur] = $gainJoueur['username'];
+					// On initialise la cagnotte
+					$tableauCagnottes[1][$indexJoueur] = $cagnotteInitiale;
+				}
+				
+				$tableauCagnottes[$indexNumMatch][$indexJoueur] = $gainJoueur['gain'] + $tableauCagnottes[$indexNumMatch-1][$indexJoueur];
+				
+				$indexJoueur++;
+    			
+    		}
+    		
+    	}
+    	
+    	return $this->render('asudreCDM14Bundle:ClassementJoueurs:graphique.html.twig', array('tableau' => json_encode($tableauCagnottes)));
 	}
 
 }

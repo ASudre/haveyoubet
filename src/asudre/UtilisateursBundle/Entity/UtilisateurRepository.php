@@ -41,20 +41,19 @@ class UtilisateurRepository extends EntityRepository
 	
 	/**
 	 * Récupération les gains pour l'ensemble des utilisateurs
-	 * @param unknown $idGroupe Groupe dont on affiche le classement
+	 * @param unknown $match Groupe dont on affiche le classement
 	 */
-	function getUtilisateursGainsMatchsTous($idGroupe) {
+	function getUtilisateursGainsMatchsTous($match) {
 	
-		$query = $this->_em->createQuery('SELECT ut.username, COALESCE(h.gain, 0)
+		$query = $this->_em->createQuery('SELECT m1.id as idMatch, ut.username, COALESCE(h.gain, 0) as gain
 				FROM asudreUtilisateursBundle:Utilisateur ut
 				LEFT JOIN asudreCDM14Bundle:Historique h
 				WITH ut.id = h.utilisateur AND h.match IN (select m.id from asudreCDM14Bundle:matchs m where m.date <= :dateMatch)
-				LEFT JOIN asudreCDM14Bundle:matchs m
-				WITH m.id = h.match_id
-				ORDER BY ut.id, m.datetime');
+				LEFT JOIN asudreCDM14Bundle:matchs m1
+				WITH m1.id = h.match
+				ORDER BY m1.date, ut.id');
 		$query->setParameters(array(
-				'dateMatch' => $match->getDate(),
-				'match' => $match
+				'dateMatch' => $match->getDate()
 		));
 	
 		return $query->getResult();

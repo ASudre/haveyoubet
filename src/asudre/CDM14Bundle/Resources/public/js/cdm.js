@@ -18,13 +18,15 @@ function mise(idMatch, msgConfirmation) {
 		return;
 	}
 	
-	if(!confirm(msgConfirmation)) {
-		displayMsg("Annulé.");
-		return;
-	}
-	
 	$('span#boutons' + idMatch).hide().after('<img id="imgLoading" name="imgLoading' + idMatch + '" src="/web/bundles/asudrecdm14/images/ajax-loader.gif" />');
 	
+	if(!confirm(msgConfirmation)) {
+		displayMsg("Annulé.");
+		$('img[name="imgLoading' + idMatch + '"]').remove();
+		$('span#boutons' + idMatch).show();
+		return;
+	}
+
 	var param = "match=" + idMatch;
 	param += "&select=" + $("select[name=select" + idMatch + "]").val();
 	param += "&mise=" + $("input[name=mise" + idMatch + "]").val();

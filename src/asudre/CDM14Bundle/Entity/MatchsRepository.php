@@ -70,6 +70,17 @@ class MatchsRepository extends EntityRepository
 	}
 	
 	/**
+	 * Récupération du dernier match joué
+	 * @param unknown $idMatch
+	 */
+	function getDernierMatchJoue() {
+		$query = $this->_em->createQuery('SELECT a FROM asudreCDM14Bundle:Matchs a WHERE a.scoreEq1 is not null and a.scoreEq2 is not null order by a.date desc');
+		$query->setMaxResults(1);
+		
+		return $query->getResult();
+	}
+	
+	/**
 	 * Récupère l'ensemble des matchs de la table
 	 */
 	function getMatchs() {
