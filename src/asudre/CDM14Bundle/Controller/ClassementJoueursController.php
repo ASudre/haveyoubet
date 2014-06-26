@@ -161,13 +161,15 @@ class ClassementJoueursController extends Controller
 					$tableauCagnottes[1][$indexJoueur] = $cagnotteInitiale;
 				}
 				
-				$tableauCagnottes[$indexNumMatch][$indexJoueur] = $gainJoueur['gain'] + $tableauCagnottes[$indexNumMatch-1][$indexJoueur];
+				$tableauCagnottes[$indexNumMatch][$indexJoueur] = round($gainJoueur['gain'] + $tableauCagnottes[$indexNumMatch-1][$indexJoueur], 2);
 				
 				$indexJoueur++;
     			
     		}
     		
     	}
+    	
+    	var_dump(json_encode($tableauCagnottes));
     	
     	return $this->render('asudreCDM14Bundle:ClassementJoueurs:graphique.html.twig', array('tableau' => json_encode($tableauCagnottes)));
 	}

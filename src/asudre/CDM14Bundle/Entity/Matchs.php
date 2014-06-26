@@ -27,7 +27,7 @@ class Matchs
     /**
      * @var string
      *
-     * @ORM\Column(name="groupe", type="string", length=10)
+     * @ORM\Column(name="groupe", type="string", nullable=true, length=10)
      */
     private $groupe;
     
