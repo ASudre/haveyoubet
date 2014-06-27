@@ -81,7 +81,7 @@ class MiseController extends Controller
 		$nomEquipe = "";
 		$match = null;
 		
-		if(is_numeric($idMatch) && is_numeric($idEquipe) && is_int($idMatch + 0) && is_int($idEquipe + 0) && is_numeric($mise)) {
+		if(is_numeric($idMatch) && is_numeric($idEquipe) && is_int($idMatch + 0) && is_int($idEquipe + 0) && is_numeric($mise) && ($mise + 0) >= 0) {
 		
 			$match = $this->serviceMatchs->getMatch($idMatch);
 			
