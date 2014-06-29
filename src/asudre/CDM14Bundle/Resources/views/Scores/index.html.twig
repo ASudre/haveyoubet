@@ -35,10 +35,10 @@
 							{{ m.date|date('d/m/Y H:i') }}
 						</td>
 						<td class="score">
-							<input type="number" name="scoreEq1-{{ m.id }}" id="scoreEq1-{{ m.id }}" value="{{ m.scoreEq1 }}"
+							<input type="number" min="0" name="scoreEq1-{{ m.id }}" id="scoreEq1-{{ m.id }}" value="{{ m.scoreEq1 }}"
 							{% if not m.estMatchJoue %} disabled="disabled" {% endif %} />
 							-
-							<input type="number" name="scoreEq2-{{ m.id }}" id="scoreEq2-{{ m.id }}" value="{{ m.scoreEq2 }}"
+							<input type="number" min="0" name="scoreEq2-{{ m.id }}" id="scoreEq2-{{ m.id }}" value="{{ m.scoreEq2 }}"
 							{% if not m.estMatchJoue %} disabled="disabled" {% endif %} />
 						</td>
 						<td>
