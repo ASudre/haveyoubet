@@ -14,7 +14,7 @@ function verifChamps(scoreEquipe1, scoreEquipe2) {
 function mise(idMatch, msgConfirmation) {
 	
 	if($("select[name=select" + idMatch + "]").val() == "" || $("input[name=mise" + idMatch + "]").val() == "") {
-		displayMsg("Veuillez remplir les deux champs.");
+		displayMsg("Veuillez entrer remplir correctement les deux champs.");
 		return;
 	}
 	

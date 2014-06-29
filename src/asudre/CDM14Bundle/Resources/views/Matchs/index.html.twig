@@ -63,7 +63,7 @@
 									{% if mises[m.id] is defined and m.equipe2.id == mises[m.id][0].equipe.id %} selected="selected" {% endif %} >{{ m.equipe2.nom }}</option>
 						</select></td>
 						<td class="selectMise">
-							<input type="text" name="mise{{ m.id }}" id="{{ m.id }}" value="{% if mises[m.id] is defined %}{{ mises[m.id][0].valeur }}{% endif %}"
+							<input type="number" step="10" name="mise{{ m.id }}" id="{{ m.id }}" value="{% if mises[m.id] is defined %}{{ mises[m.id][0].valeur }}{% endif %}"
 							{% if m.estMatchJoue %} disabled="disabled" {% endif %} />
 						</td>
 						<td>
@@ -74,12 +74,6 @@
 									{% endif %}>
 									{{ 'mises.valider'|trans }}
 								</div>
-{# 								<div title="Annuler mise" #}
-{# 									{% if m.estMatchJoue %} class="buttonAnnuler"#}
-{# 									{% else %} class="buttonAnnuler red" onclick="annuleMise({{ m.id }});"#}
-{# 									{% endif %}>#}
-{# 									X#}
-{# 								</div>#}
 							</span>
 						</td>
 					</tr>
