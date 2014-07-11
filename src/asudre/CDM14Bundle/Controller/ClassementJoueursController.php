@@ -176,15 +176,12 @@ class ClassementJoueursController extends Controller
     		
     	}
     	
-    	var_dump($tableauCagnottes);
-    	return new Response("");
-    	
-// 		// Suppression des index
-//     	foreach ($tableauCagnottes as $index=>$tabMatch) {
-//     		$tableauCagnottes[$index] = array_values($tabMatch);
-//     	}
+		// Suppression des index
+    	foreach ($tableauCagnottes as $index=>$tabMatch) {
+    		$tableauCagnottes[$index] = array_values($tabMatch);
+    	}
 
-//     	return $this->render('asudreCDM14Bundle:ClassementJoueurs:graphique.html.twig', array('tableau' => json_encode($tableauCagnottes, false)));
+    	return $this->render('asudreCDM14Bundle:ClassementJoueurs:graphique.html.twig', array('tableau' => json_encode($tableauCagnottes, false)));
 	}
 
 }
