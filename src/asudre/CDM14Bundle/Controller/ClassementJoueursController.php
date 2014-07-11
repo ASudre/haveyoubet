@@ -124,54 +124,67 @@ class ClassementJoueursController extends Controller
     		$cagnotteInitiale = 10000;
     		// Les deux premières lignes sont le nom des joueurs et les cagnottes initiales
     		$indexNumMatch = 1;
-    		$indexJoueur = 1;
-    		// contient les cagnottes pour chaque joueur
-    		$tableauCagnottes = array();
     		
-    		// true losrqu'on initialise avec le nom des joueurs et la cagnotte initialie lors de la première itération
-    		$estInitialisation = true;
+    		// contient les cagnottes pour chaque joueur et pour chaque match ordonné
+    		$tableauCagnottes = array();
+    		$tableauCagnottes[0][0] = 'Match';
+    		$tableauCagnottes[1][0] = 0;
+    		
+    		// utilisateurs ordonnés par id
+    		$utilisateurs = $serviceUtilisateurs->getUtilisateurs();
+    		
+    		// Initialisation du tableau
+    		foreach ($utilisateurs as $index=>$joueur) {
+    			
+    			// on sauve le nom des joueurs
+    			$tableauCagnottes[0][$joueur->getId()] = $joueur->getUsername();
+    			// On initialise la cagnotte
+    			$tableauCagnottes[1][$joueur->getId()] = $cagnotteInitiale;
+    		}
     		
     		$joueursCagnottes = $serviceUtilisateurs->getUtilisateursGainsMatchsTous($match);
     		
-    		// Crée le tableau en associant les utilisateurs à leurs cagnottes ordonnées par match
+    		$tmpJoueurs = null;
+    		
+     		// Crée le tableau en associant les utilisateurs à leurs cagnottes ordonnées par match
     		foreach ($joueursCagnottes as $index=>$gainJoueur) {
     			
+    			// Pour chaque nouveau match
     			if($idMatchCourant != $gainJoueur['idMatch']) {
-	    			if($idMatchCourant != null) {
-	    				$estInitialisation = false;
-	    			}
-	    			else {
-	    				$tableauCagnottes[0][0] = 'Match';
-	    				$tableauCagnottes[1][0] = 0;
-	    			}
-	    			
+
+    				// On positionne les cagnottes des joueurs n'étant pas inscrit au match et absents du tableau $tableauCagnottes
+    				if($tmpJoueurs != null) {
+    					foreach ($tmpJoueurs as $id=>$username) {
+    						$tableauCagnottes[$indexNumMatch][$id] = $tableauCagnottes[$indexNumMatch-1][$id];
+    					}
+    				}
+    				
+    				// Tableau temporaire permettant de mettre à jour la cagnotte des joueurs non inscrits à l'époque du match
+    				$tmpJoueurs = $tableauCagnottes[0];
+    				
+    				// récupération du match courant
 	    			$idMatchCourant = $gainJoueur['idMatch'];
 	    			
-	    			$indexNumMatch++;
-    				$indexJoueur = 0;
-    				$tableauCagnottes[$indexNumMatch][$indexJoueur++] = $indexNumMatch - 1;
+	    			// Positionne du numéro du match en début de tableau
+    				$tableauCagnottes[++$indexNumMatch][0] = $indexNumMatch - 1;
 
     			}
     			
-				// Il s'agit de remplir les deux premières lignes : le nom des joueurs et la cagnotte initiale
-				if($estInitialisation) {
-					// on sauve le nom des joueurs
-					$tableauCagnottes[0][$indexJoueur] = $gainJoueur['username'];
-					// On initialise la cagnotte
-					$tableauCagnottes[1][$indexJoueur] = $cagnotteInitiale;
-				}
-				
-				$tableauCagnottes[$indexNumMatch][$indexJoueur] = round($gainJoueur['gain'] + $tableauCagnottes[$indexNumMatch-1][$indexJoueur], 2);
-				
-				$indexJoueur++;
-    			
+   				$tableauCagnottes[$indexNumMatch][$gainJoueur['userId']] = round($gainJoueur['gain'] + $tableauCagnottes[$indexNumMatch-1][$gainJoueur['userId']], 2);
+				unset($tmpJoueurs[$gainJoueur['userId']]);
     		}
     		
     	}
     	
-    	var_dump(json_encode($tableauCagnottes));
+    	var_dump($tableauCagnottes);
+    	return new Response("");
     	
-    	return $this->render('asudreCDM14Bundle:ClassementJoueurs:graphique.html.twig', array('tableau' => json_encode($tableauCagnottes)));
+// 		// Suppression des index
+//     	foreach ($tableauCagnottes as $index=>$tabMatch) {
+//     		$tableauCagnottes[$index] = array_values($tabMatch);
+//     	}
+
+//     	return $this->render('asudreCDM14Bundle:ClassementJoueurs:graphique.html.twig', array('tableau' => json_encode($tableauCagnottes, false)));
 	}
 
 }

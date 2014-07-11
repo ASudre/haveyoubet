@@ -158,4 +158,12 @@ class ServiceUtilisateurs
 	public function getUtilisateursGainsMatchsTous($match) {
 		return $this->utilisateursRepo->getUtilisateursGainsMatchsTous($match);
 	}
+	
+
+	/**
+	 * Récupère l'ensemble des utilisateurs
+	 */
+	public function getUtilisateurs() {
+		return $this->utilisateursRepo->getUtilisateurs();
+	}
 }
