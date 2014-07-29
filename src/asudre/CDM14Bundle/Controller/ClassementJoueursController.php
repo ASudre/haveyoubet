@@ -161,17 +161,22 @@ class ClassementJoueursController extends Controller
     				
     				// Tableau temporaire permettant de mettre à jour la cagnotte des joueurs non inscrits à l'époque du match
     				$tmpJoueurs = $tableauCagnottes[0];
-    				
+
     				// récupération du match courant
 	    			$idMatchCourant = $gainJoueur['idMatch'];
 	    			
 	    			// Positionne du numéro du match en début de tableau
     				$tableauCagnottes[++$indexNumMatch][0] = $indexNumMatch - 1;
 
+    				// Le joueur a été traité pour ce match, on l'enlève du tableau temporaire
+    				unset($tmpJoueurs[0]);
+
     			}
     			
    				$tableauCagnottes[$indexNumMatch][$gainJoueur['userId']] = round($gainJoueur['gain'] + $tableauCagnottes[$indexNumMatch-1][$gainJoueur['userId']], 2);
-				unset($tmpJoueurs[$gainJoueur['userId']]);
+				
+   				// Le joueur a été traité pour ce match, on l'enlève du tableau temporaire
+   				unset($tmpJoueurs[$gainJoueur['userId']]);
     		}
     		
     	}

@@ -7,18 +7,23 @@
 	  <head>
 	    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 	    <script type="text/javascript">
+
 	      google.load("visualization", "1", {packages:["corechart"]});
-	      google.setOnLoadCallback(drawChart);
+
+
+     	  google.setOnLoadCallback(drawChart);
+
 	      function drawChart() {
-	        var data = google.visualization.arrayToDataTable({{ tableau|raw }});
 
 	        var options = {
 	          title: 'Evolution des scores'
 	        };
 	
-	        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+          var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+     	  var data = google.visualization.arrayToDataTable({{ tableau|raw }});
 	        chart.draw(data, options);
 	      }
+	      
 	    </script>
 	  </head>
 	  <body>

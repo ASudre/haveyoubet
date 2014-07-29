@@ -51,7 +51,7 @@ class UtilisateurRepository extends EntityRepository
 				WITH ut.id = h.utilisateur AND h.match IN (select m.id from asudreCDM14Bundle:matchs m where m.date <= :dateMatch)
 				LEFT JOIN asudreCDM14Bundle:matchs m1
 				WITH m1.id = h.match
-				ORDER BY m1.date, ut.id');
+				ORDER BY m1.date, m1.id, ut.id');
 		$query->setParameters(array(
 				'dateMatch' => $match->getDate()
 		));
